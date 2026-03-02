@@ -1,0 +1,244 @@
+// BJ Jewelry - Prisma Schema
+// Database: PostgreSQL (Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  phone         String?
+  image         String?
+  role          UserRole  @default(CUSTOMER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  orders        Order[]
+  appointments  Appointment[]
+  wishlist      WishlistItem[]
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String        @db.Text
+  price       Float
+  weight      Float?
+  purity      String?
+  metal       MetalType
+  category    Category
+  images      String[]
+  inStock     Boolean       @default(true)
+  featured    Boolean       @default(false)
+  sanityId    String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  orderItems   OrderItem[]
+  wishlistItems WishlistItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  userId          String?
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  address         String        @db.Text
+  city            String
+  state           String
+  pincode         String
+  totalAmount     Float
+  status          OrderStatus   @default(PENDING)
+  razorpayOrderId String?
+  razorpayPaymentId String?
+  razorpaySignature String?
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  user      User?       @relation(fields: [userId], references: [id])
+  items     OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model Appointment {
+  id          String            @id @default(cuid())
+  userId      String?
+  name        String
+  email       String
+  phone       String
+  date        DateTime
+  timeSlot    String
+  type        AppointmentType
+  location    String
+  message     String?           @db.Text
+  status      AppointmentStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("appointments")
+}
+
+model SupportTicket {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String        @db.Text
+  category  TicketCategory
+  status    TicketStatus  @default(OPEN)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@map("support_tickets")
+}
+
+model MetalRatesCache {
+  id        String   @id @default("singleton")
+  data      Json
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("metal_rates_cache")
+}
+
+model WishlistItem {
+  id        String  @id @default(cuid())
+  userId    String
+  productId String
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("wishlist_items")
+}
+
+enum UserRole {
+  CUSTOMER
+  WHOLESALE
+  ADMIN
+}
+
+enum MetalType {
+  GOLD_24K
+  GOLD_22K
+  GOLD_18K
+  SILVER
+  PLATINUM
+  DIAMOND
+  KUNDAN
+  GEMSTONE
+}
+
+enum Category {
+  BRIDAL
+  DIAMOND
+  TEMPLE
+  KUNDAN_POLKI
+  MENS
+  SILVER
+  NEW_ARRIVALS
+  RINGS
+  NECKLACES
+  EARRINGS
+  BANGLES
+  PENDANTS
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum AppointmentType {
+  IN_STORE
+  VIDEO_CONSULTATION
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum TicketCategory {
+  ORDER
+  PRODUCT
+  REPAIR
+  CERTIFICATION
+  GENERAL
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}

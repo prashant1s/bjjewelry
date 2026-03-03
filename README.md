@@ -1,5 +1,10 @@
 Project setup for BJ Jewelry
-
+git clone https://github.com/prashant1s/bjjewelry.git
+cd bjjewelry
+cp .env.example .env.local
+npm install
+npm run build
+npm run dev
 1. Prerequisites
    Node.js 18+ (20+ recommended for Next.js 16)
    npm, pnpm, yarn, or bun

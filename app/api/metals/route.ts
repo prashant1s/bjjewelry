@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { getMetalRates } from "@/lib/gold";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
+export const revalidate = 900
 export async function GET() {
   try {
     const rates = await getMetalRates();
@@ -18,12 +17,12 @@ export async function GET() {
 
     // fallback values
     return NextResponse.json({
-      gold24k: 7180,
-      gold22k: 6582,
-      gold18k: 5385,
-      silver: 87.4,
-      platinum: 9950,
-      mcxGold: 71800,
+      gold24k:0.00,
+      gold22k:0.00,
+      gold18k:0.00,
+      silver:0.00,
+      platinum:0.00,
+      mcxGold:0.00,
       updatedAt: new Date().toISOString(),
       changes: {
         gold24k: 0.32,

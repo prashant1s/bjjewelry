@@ -32,6 +32,7 @@ const TICKER_ITEMS = (rates: MetalRates) => [
 
 export function MetalTicker() {
   const [rates, setRates] = useState<MetalRates | null>(null);
+  const [mounted, setMounted] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
 
   async function fetchRates() {
@@ -47,6 +48,7 @@ export function MetalTicker() {
   }
 
   useEffect(() => {
+    setMounted(true);
     fetchRates();
     intervalRef.current = setInterval(fetchRates, 15 * 60 * 1000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
@@ -62,7 +64,12 @@ export function MetalTicker() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="bg-[#1a1a1a] text-white overflow-hidden relative h-9" role="marquee" aria-label="Live metal rates">
+    <div 
+      className="bg-[#1a1a1a] text-white overflow-hidden relative h-9" 
+      role="marquee" 
+      aria-label="Live metal rates"
+      suppressHydrationWarning
+    >
       <div className="flex animate-[ticker_40s_linear_infinite] whitespace-nowrap h-full items-center ticker-fade">
         {doubled.map((item, i) => (
           <span key={i} className="inline-flex items-center gap-1.5 px-6 text-[11px] tracking-widest uppercase font-medium">
@@ -84,13 +91,6 @@ export function MetalTicker() {
           </span>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes ticker {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   );
 }

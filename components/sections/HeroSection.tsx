@@ -6,22 +6,31 @@ import { ArrowRight, FileText } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] bg-white flex items-center overflow-hidden">
-      {/* Background texture */}
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #C9A84C 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      
+      {/* ── Video Background ── */}
+      <div className="absolute inset-0 z-0">
+        <video
+          src="/hero-bg.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+        {/* Dark overlay so text stays readable */}
+        <div className="absolute inset-0 bg-black/55" />
+        {/* Subtle gold vignette at edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.5)_100%)]" />
+      </div>
 
       {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/20 to-transparent" />
-      <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/20 to-transparent" />
+      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/30 to-transparent z-10" />
+      <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/30 to-transparent z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          
           {/* Left – Text */}
           <div>
             {/* Eyebrow */}
@@ -43,14 +52,14 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-[#1a1a1a] mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white mb-6"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               Where Every
               <br />
               <em
                 className="not-italic gold-text"
-                style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}
+                style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "#C9A84C" }}
               >
                 Jewel
               </em>
@@ -63,7 +72,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-[#6a6a6a] text-base leading-relaxed max-w-md mb-10"
+              className="text-white/70 text-base leading-relaxed max-w-md mb-10"
             >
               From radiant gold to shimmering diamonds, lustrous silver to precious gemstones — BJ Jewelry has been Hyderabad&apos;s destination for every kind of beauty since 2007, now expanding to Chennai.
             </motion.p>
@@ -78,7 +87,10 @@ export function HeroSection() {
               <Link href="/collections" className="btn-gold flex items-center gap-2">
                 Explore Collections <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/trade/b2b" className="btn-outline-gold flex items-center gap-2">
+              <Link
+                href="/trade/b2b"
+                className="flex items-center gap-2 border border-white/40 text-white hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors text-[11px] tracking-[0.15em] uppercase px-6 py-3"
+              >
                 <FileText className="w-4 h-4" /> B2B Catalogue
               </Link>
             </motion.div>
@@ -98,7 +110,7 @@ export function HeroSection() {
               ].map((badge) => (
                 <div key={badge.label} className="flex items-center gap-2">
                   <span className="text-[#C9A84C] text-xs">{badge.icon}</span>
-                  <span className="text-[10px] tracking-[0.15em] uppercase text-[#8a8a8a]">
+                  <span className="text-[10px] tracking-[0.15em] uppercase text-white/60">
                     {badge.label}
                   </span>
                 </div>
@@ -113,22 +125,19 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.2 }}
             className="flex flex-col items-center justify-center"
           >
-            {/* Diamond icon with glow */}
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#C9A84C]/20 to-transparent blur-3xl scale-150" />
               <div className="relative">
-                {/* Ornamental circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-72 h-72 rounded-full border border-[#C9A84C]/15" />
+                  <div className="w-72 h-72 rounded-full border border-[#C9A84C]/20" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-56 h-56 rounded-full border border-[#C9A84C]/25" />
+                  <div className="w-56 h-56 rounded-full border border-[#C9A84C]/30" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-40 h-40 rounded-full border border-[#C9A84C]/35" />
+                  <div className="w-40 h-40 rounded-full border border-[#C9A84C]/40" />
                 </div>
 
-                {/* Main diamond SVG */}
                 <div className="relative flex items-center justify-center w-80 h-80">
                   <svg viewBox="0 0 120 120" className="w-40 h-40 drop-shadow-2xl">
                     <defs>
@@ -167,7 +176,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
         <span className="text-[9px] tracking-[0.3em] uppercase text-[#C9A84C]">Scroll</span>
         <motion.div

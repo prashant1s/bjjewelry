@@ -112,30 +112,6 @@ export function AppointmentSection() {
             </Link>
           </motion.div>
         </div>
-
-        {/* Contact quick strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="border border-[#f2d98a]/60 bg-[#FAF7F2] px-8 py-5 flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left"
-        >
-          <p className="text-[11px] tracking-[0.2em] uppercase text-[#9a9a9a]">
-            Quick contact
-          </p>
-          <div className="h-px w-12 bg-[#f2d98a] hidden md:block" />
-          <div className="flex flex-wrap justify-center md:justify-start gap-6 text-sm text-[#4a4a4a]">
-            <a href="tel:+919676343210" className="hover:text-[#C9A84C] transition-colors">
-              📞 +91 96763 43210
-            </a>
-            <a href="mailto:hello@bjjewelry.in" className="hover:text-[#C9A84C] transition-colors">
-              ✉️ hello@bjjewelry.in
-            </a>
-            <a href="https://wa.me/919676343210" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A84C] transition-colors">
-              💬 WhatsApp Us
-            </a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

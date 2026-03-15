@@ -34,55 +34,6 @@ const INFORMATION = [
 export function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white">
-      {/* CTA Section */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 text-center">
-          <p className="text-[11px] tracking-[0.3em] uppercase text-[#C9A84C] mb-4">
-            Visit Us In Person
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-light text-white mb-8"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            Experience the Craft. Feel the Legacy.
-          </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/appointments" className="btn-gold">
-              📅 Book Appointment
-            </Link>
-            <Link
-              href="https://wa.me/919676343210"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline-gold"
-            >
-              📹 Video Consultation
-            </Link>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 text-sm text-white/60">
-            <a href="tel:+919676343210" className="flex items-center gap-2 hover:text-[#C9A84C] transition-colors">
-              <span>📞</span> +91 96763 43210
-            </a>
-            <span className="hidden sm:block w-px h-4 bg-white/20" />
-            <a href="mailto:hello@bjjewelry.in" className="flex items-center gap-2 hover:text-[#C9A84C] transition-colors">
-              <span>✉️</span> hello@bjjewelry.in
-            </a>
-            <span className="hidden sm:block w-px h-4 bg-white/20" />
-            <span className="flex items-center gap-2">
-              <span>📍</span> Hyderabad & Chennai
-            </span>
-            <span className="hidden sm:block w-px h-4 bg-white/20" />
-            <a
-              href="https://wa.me/919676343210"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-[#C9A84C] transition-colors"
-            >
-              <span>💬</span> WhatsApp Us
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">

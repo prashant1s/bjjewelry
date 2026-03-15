@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CustomDesignCTA } from "./CollectionCTA";
+import { FloatingGoldLine } from "@/components/sections/Float";
 
 export const metadata: Metadata = {
   title: "Collections – Fine Jewellery",
@@ -69,19 +71,27 @@ const COLLECTIONS = [
 export default function CollectionsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-[#FAF7F2] border-b border-[#f2d98a]/50 py-16 text-center">
-        <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A84C] mb-3">Our Atelier</p>
-        <h1
-          className="text-4xl md:text-5xl font-light text-[#1a1a1a]"
-          style={{ fontFamily: "var(--font-serif)" }}
-        >
-          All Collections
-        </h1>
-        <p className="text-[#6a6a6a] mt-4 max-w-md mx-auto text-sm leading-relaxed">
-          18 years of craft. Every piece tells a story of heritage, skill, and beauty.
-        </p>
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mt-6" />
+
+      {/* Header — relative + overflow-hidden so line stays inside */}
+      <div className="relative bg-[#FAF7F2] border-b border-[#f2d98a]/50 py-16 text-center overflow-hidden">
+        
+        {/* ✅ Line first, behind everything */}
+        <FloatingGoldLine />
+
+        {/* ✅ Content above the line */}
+        <div className="relative z-10">
+          <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A84C] mb-3">Our Atelier</p>
+          <h1
+            className="text-4xl md:text-5xl font-light text-[#1a1a1a]"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            All Collections
+          </h1>
+          <p className="text-[#6a6a6a] mt-4 max-w-md mx-auto text-sm leading-relaxed">
+            18 years of craft. Every piece tells a story of heritage, skill, and beauty.
+          </p>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mt-6" />
+        </div>
       </div>
 
       {/* Grid */}
@@ -116,6 +126,8 @@ export default function CollectionsPage() {
           ))}
         </div>
       </div>
+
+      <CustomDesignCTA />
     </div>
   );
 }

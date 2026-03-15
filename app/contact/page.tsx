@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { NewsletterSection } from "./contactCTA";
 
 const CATEGORIES = [
   { value: "ORDER", label: "Order Query" },
@@ -223,6 +224,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <NewsletterSection />
     </div>
   );
 }

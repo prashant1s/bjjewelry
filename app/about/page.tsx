@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CTASection } from "./ABoutCTA";
+import { FloatingGoldLine } from "@/components/sections/Float";
 
 export const metadata: Metadata = {
   title: "About BJ Jewelry – 18 Years of Craftsmanship",
@@ -19,21 +21,30 @@ const MILESTONES = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="bg-[#FAF7F2] border-b border-[#f2d98a]/50 py-20 text-center">
-        <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A84C] mb-3">Our Story</p>
-        <h1
-          className="text-4xl md:text-6xl font-light text-[#1a1a1a]"
-          style={{ fontFamily: "var(--font-serif)" }}
-        >
-          18 Years of{" "}
-          <em className="not-italic gold-text" style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}>
-            Legacy
-          </em>
-        </h1>
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mt-6" />
+
+      {/* Header — FloatingGoldLine lives HERE, inside this div */}
+      <div className="relative bg-[#FAF7F2] border-b border-[#f2d98a]/50 py-20 text-center overflow-hidden">
+        
+        {/* ✅ Gold line is now behind the heading, same bg */}
+        <FloatingGoldLine />
+
+        {/* Content sits above the line */}
+        <div className="relative z-10">
+          <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A84C] mb-3">Our Story</p>
+          <h1
+            className="text-4xl md:text-6xl font-light text-[#1a1a1a]"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            18 Years of{" "}
+            <em className="not-italic gold-text" style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}>
+              Legacy
+            </em>
+          </h1>
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mt-6" />
+        </div>
       </div>
 
+      {/* Rest of page unchanged */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
         {/* Story */}
         <div className="text-center mb-16">
@@ -101,6 +112,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      <CTASection />
     </div>
   );
 }

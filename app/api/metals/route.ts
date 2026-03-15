@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { getMetalRates } from "@/lib/gold";
 
 export const runtime = "nodejs";
-export const revalidate = 900
+export const revalidate = 900;
+
 export async function GET() {
   try {
     const rates = await getMetalRates();
@@ -15,21 +16,20 @@ export async function GET() {
   } catch (error) {
     console.error("Metal rates fetch error:", error);
 
-    // fallback values
     return NextResponse.json({
-      gold24k:0.00,
-      gold22k:0.00,
-      gold18k:0.00,
-      silver:0.00,
-      platinum:0.00,
-      mcxGold:0.00,
+      gold24k: 0,
+      gold22k: 0,
+      gold18k: 0,
+      silver: 0,
+      platinum: 0,
+      mcxGold: 0,
       updatedAt: new Date().toISOString(),
       changes: {
-        gold24k: 0.32,
-        gold22k: 0.08,
-        gold18k: 0.21,
-        silver: -0.15,
-        platinum: 0.44,
+        gold24k: 0,
+        gold22k: 0,
+        gold18k: 0,
+        silver: 0,
+        platinum: 0,
       },
       fallback: true,
     });
@@ -38,15 +38,19 @@ export async function GET() {
 
 
 
+
+
+
+
 // import { NextResponse } from "next/server";
 // import { getMetalRates } from "@/lib/gold";
 
-// export const dynamic = "force-dynamic";
-// export const revalidate = 0;
-
+// export const runtime = "nodejs";
+// export const revalidate = 900
 // export async function GET() {
 //   try {
 //     const rates = await getMetalRates();
+
 //     return NextResponse.json(rates, {
 //       headers: {
 //         "Cache-Control": "public, s-maxage=900, stale-while-revalidate=300",
@@ -54,20 +58,26 @@ export async function GET() {
 //     });
 //   } catch (error) {
 //     console.error("Metal rates fetch error:", error);
-//     // Fallback indicative rates
-//     return NextResponse.json(
-//       {
-//         gold24k: 7180,
-//         gold22k: 6582,
-//         gold18k: 5385,
-//         silver: 87.4,
-//         platinum: 9950,
-//         mcxGold: 71800,
-//         updatedAt: new Date().toISOString(),
-//         changes: { gold24k: 0.32, gold22k: 0.08, gold18k: 0.21, silver: -0.15, platinum: 0.44 },
-//         fallback: true,
+
+//     // fallback values
+//     return NextResponse.json({
+//       gold24k:0.00,
+//       gold22k:0.00,
+//       gold18k:0.00,
+//       silver:0.00,
+//       platinum:0.00,
+//       mcxGold:0.00,
+//       updatedAt: new Date().toISOString(),
+//       changes: {
+//         gold24k: 0.32,
+//         gold22k: 0.08,
+//         gold18k: 0.21,
+//         silver: -0.15,
+//         platinum: 0.44,
 //       },
-//       { status: 200 }
-//     );
+//       fallback: true,
+//     });
 //   }
 // }
+
+

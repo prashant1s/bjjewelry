@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { cn } from "@/lib/utils";
 
-// 1. Made all properties accept null just in case the API scraper fails on a specific field
+
 interface MetalRates {
   gold24k: number | null;
   gold22k: number | null;
@@ -20,7 +19,7 @@ interface MetalRates {
   };
 }
 
-// 2. Brought back the bulletproof formatter
+// 1. The Bulletproof Formatter (Stops the crash!)
 function safeFormat(value: number | string | null | undefined) {
   if (value === null || value === undefined) return "0";
   const num = Number(value);
@@ -28,9 +27,9 @@ function safeFormat(value: number | string | null | undefined) {
   return num.toLocaleString("en-IN");
 }
 
-// 3. Added optional chaining (?.) and safeFormat to prevent ALL crashes
+// 2. Safe Optional Chaining applied here
 const TICKER_ITEMS = (rates: MetalRates) => [
-{ 
+  { 
     label: "Gold Rate", 
     value: `₹${safeFormat(rates?.gold24k)}/g`, 
     change: rates?.changes?.gold24k ?? 0 
@@ -41,6 +40,7 @@ const TICKER_ITEMS = (rates: MetalRates) => [
     change: rates?.changes?.silver ?? 0 
   },
 ];
+
 export function MetalTicker() {
   const [rates, setRates] = useState<MetalRates | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -50,7 +50,7 @@ export function MetalTicker() {
       const res = await fetch("/api/metals", { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
-        if (data) setRates(data); // Extra check to ensure data isn't completely null
+        if (data) setRates(data); 
       }
     } catch {
       // Silently fail — fallback will render
@@ -64,9 +64,9 @@ export function MetalTicker() {
   }, []);
 
   const defaultRates: MetalRates = {
-    gold24k: 7180, gold22k: 6582, gold18k: 5385,
-    silver: 87.4, platinum: 9950, mcxGold: 71800,
-    changes: { gold24k: 0.32, gold22k: 0.08, gold18k: 0.21, silver: -0.15, platinum: 0.44 },
+    gold24k: 7380, gold22k: 6760, gold18k: 5535,
+    silver: 87.4, platinum: 9950, mcxGold: 73800,
+    changes: { gold24k: 0, gold22k: 0, gold18k: 0, silver: 0, platinum: 0 },
   };
 
   const items = TICKER_ITEMS(rates ?? defaultRates);
@@ -82,13 +82,6 @@ export function MetalTicker() {
                 <span className="text-[#C9A84C]">{item.label}</span>
                 <span className="text-white/80">·</span>
                 <span className="text-white font-semibold">{item.value}</span>
-                
-                {/* 4. Added a strict number check before doing Math.abs() to prevent NaN errors */}
-                {typeof item.change === 'number' && (
-                  <span className={cn("text-[10px] font-medium", item.change >= 0 ? "text-emerald-400" : "text-red-400")}>
-                    {item.change >= 0 ? "▲" : "▼"} {Math.abs(item.change).toFixed(2)}%
-                  </span>
-                )}
               </>
             ) : (
               <span className="text-white/60">{item.label}</span>
@@ -106,43 +99,54 @@ export function MetalTicker() {
 // import { useEffect, useState, useRef } from "react";
 // import { cn } from "@/lib/utils";
 
+// // 1. Made all properties accept null just in case the API scraper fails on a specific field
 // interface MetalRates {
-//   gold24k: number;
-//   gold22k: number;
-//   gold18k: number;
-//   silver: number;
-//   platinum: number;
-//   mcxGold: number;
-//   changes: {
-//     gold24k: number;
-//     gold22k: number;
-//     gold18k: number;
-//     silver: number;
-//     platinum: number;
+//   gold24k: number | null;
+//   gold22k: number | null;
+//   gold18k: number | null;
+//   silver: number | null;
+//   platinum: number | null;
+//   mcxGold: number | null;
+//   changes?: {
+//     gold24k: number | null;
+//     gold22k: number | null;
+//     gold18k: number | null;
+//     silver: number | null;
+//     platinum: number | null;
 //   };
 // }
 
-// const TICKER_ITEMS = (rates: MetalRates) => [
-//   { label: "24K Gold", value: `₹${rates.gold24k.toLocaleString("en-IN")}/g`, change: rates.changes.gold24k },
-//   { label: "22K Gold", value: `₹${rates.gold22k.toLocaleString("en-IN")}/g`, change: rates.changes.gold22k },
-//   { label: "18K Gold", value: `₹${rates.gold18k.toLocaleString("en-IN")}/g`, change: rates.changes.gold18k },
-//   { label: "Silver", value: `₹${rates.silver}/g`, change: rates.changes.silver },
-//   { label: "Platinum", value: `₹${rates.platinum.toLocaleString("en-IN")}/g`, change: rates.changes.platinum },
-//   { label: "MCX Gold", value: `₹${rates.mcxGold.toLocaleString("en-IN")}/10g`, change: rates.changes.gold24k },
-//   { label: "Free Shipping on Orders Above ₹25,000", value: "", change: null },
-//   { label: "BIS Hallmarked", value: "", change: null },
-// ];
+// // 2. Brought back the bulletproof formatter
+// function safeFormat(value: number | string | null | undefined) {
+//   if (value === null || value === undefined) return "0";
+//   const num = Number(value);
+//   if (isNaN(num)) return "0"; 
+//   return num.toLocaleString("en-IN");
+// }
 
+// // 3. Added optional chaining (?.) and safeFormat to prevent ALL crashes
+// const TICKER_ITEMS = (rates: MetalRates) => [
+// { 
+//     label: "Gold Rate", 
+//     value: `₹${safeFormat(rates?.gold24k)}/g`, 
+//     change: rates?.changes?.gold24k ?? 0 
+//   },
+//   { 
+//     label: "Silver Rate", 
+//     value: `₹${safeFormat(rates?.silver)}/g`, 
+//     change: rates?.changes?.silver ?? 0 
+//   },
+// ];
 // export function MetalTicker() {
 //   const [rates, setRates] = useState<MetalRates | null>(null);
-//   const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
+//   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 //   async function fetchRates() {
 //     try {
 //       const res = await fetch("/api/metals", { cache: "no-store" });
 //       if (res.ok) {
 //         const data = await res.json();
-//         setRates(data);
+//         if (data) setRates(data); // Extra check to ensure data isn't completely null
 //       }
 //     } catch {
 //       // Silently fail — fallback will render
@@ -174,7 +178,9 @@ export function MetalTicker() {
 //                 <span className="text-[#C9A84C]">{item.label}</span>
 //                 <span className="text-white/80">·</span>
 //                 <span className="text-white font-semibold">{item.value}</span>
-//                 {item.change !== null && (
+                
+//                 {/* 4. Added a strict number check before doing Math.abs() to prevent NaN errors */}
+//                 {typeof item.change === 'number' && (
 //                   <span className={cn("text-[10px] font-medium", item.change >= 0 ? "text-emerald-400" : "text-red-400")}>
 //                     {item.change >= 0 ? "▲" : "▼"} {Math.abs(item.change).toFixed(2)}%
 //                   </span>
@@ -187,13 +193,6 @@ export function MetalTicker() {
 //           </span>
 //         ))}
 //       </div>
-
-//       {/* <style jsx>{`
-//         @keyframes ticker {
-//           from { transform: translateX(0); }
-//           to { transform: translateX(-50%); }
-//         }
-//       `}</style> */}
 //     </div>
 //   );
 // }

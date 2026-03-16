@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, Search, Heart, ShoppingBag, ChevronDown } from "lucide-react";
+import { Menu, X, Search, Heart, ShoppingBag, ChevronDown, User as UserIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 
 type NavChild = { label: string; href: string };
@@ -44,6 +45,7 @@ const GOLD = "#c9a030";
 const NAV_TEXT = "#4a4a4a";
 
 export function Navbar() {
+  const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -160,6 +162,13 @@ export function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
+          <Link
+  href={session ? "/account" : "/login"}
+  className="hidden md:flex text-[#4a4a4a] hover:text-[#C9A84C] transition-colors"
+  aria-label="Account"
+>
+  <UserIcon className="w-5 h-5" />
+</Link>
             <button
               className="hidden md:flex transition-colors"
               style={{ color: NAV_TEXT }}
@@ -204,6 +213,7 @@ export function Navbar() {
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
+            
           </div>
         </div>
       </div>

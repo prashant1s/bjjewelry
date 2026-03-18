@@ -47,6 +47,20 @@
   }
 }
 
+.nav-gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;               /* starts hidden */
+  height: 1.5px;
+  background-color: #c9a030;
+  transition: width 0.3s ease;
+}
+.nav-gold-underline:hover::after {
+  width: 100%;             /* slides in on hover */
+}
+
 @layer utilities {
   .gold-gradient {
     background: linear-gradient(135deg, #C9A84C 0%, #e8c04a 40%, #C9A84C 60%, #9a7520 100%);

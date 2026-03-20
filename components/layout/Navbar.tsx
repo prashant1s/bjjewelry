@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, Search, Heart, ShoppingBag, ChevronDown, User } from "lucide-react";
+import { Menu, X, Search, Heart, ShoppingBag, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useSession } from "next-auth/react";
 
 type NavChild = { label: string; href: string };
 type NavLink = { label: string; href: string; children?: NavChild[] };
@@ -45,6 +46,7 @@ const GOLD = "#c9a030";
 const NAV_TEXT = "#4a4a4a";
 
 export function Navbar() {
+  const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -181,35 +183,35 @@ export function Navbar() {
               ))}
             </nav>
 
-            {/* Right Actions */}
-            <div className="flex items-center gap-3 shrink-0">
-              <button
-                className="hidden lg:flex transition-colors"
-                style={{ color: NAV_TEXT }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
-                aria-label="Search"
-              >
-                <Search className="w-[18px] h-[18px]" />
-              </button>
-              <button
-                className="hidden lg:flex transition-colors"
-                style={{ color: NAV_TEXT }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
-                aria-label="Wishlist"
-              >
-                <Heart className="w-[18px] h-[18px]" />
-              </button>
-              <button
-                className="hidden lg:flex transition-colors"
-                style={{ color: NAV_TEXT }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
-                onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
-                aria-label="Cart"
-              >
-                <ShoppingBag className="w-[18px] h-[18px]" />
-              </button>
+          {/* Right Actions */}
+          <div className="flex items-center gap-4">
+            <button
+              className="hidden md:flex transition-colors"
+              style={{ color: NAV_TEXT }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <button
+              className="hidden md:flex transition-colors"
+              style={{ color: NAV_TEXT }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
+              aria-label="Wishlist"
+            >
+              <Heart className="w-5 h-5" />
+            </button>
+            <button
+              className="transition-colors"
+              style={{ color: NAV_TEXT }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
+              aria-label="Cart"
+            >
+              <ShoppingBag className="w-5 h-5" />
+            </button>
 
               {/* Divider */}
               <div className="hidden lg:block w-px h-5 bg-yellow-200 mx-1" />
@@ -228,7 +230,7 @@ export function Navbar() {
                   (e.currentTarget as HTMLAnchorElement).style.color = GOLD;
                 }}
               >
-                <User className="w-3.5 h-3.5" />
+                {/* <User className="w-3.5 h-3.5" /> */}
                 Login
               </Link>
 
@@ -240,19 +242,18 @@ export function Navbar() {
                 Book Appointment
               </Link>
 
-              {/* Mobile hamburger */}
-              <button
-                className="lg:hidden"
-                style={{ color: NAV_TEXT }}
-                onClick={() => setMobileOpen((prev) => !prev)}
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                aria-expanded={mobileOpen}
-              >
-                {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+            <button
+              className="md:hidden"
+              style={{ color: NAV_TEXT }}
+              onClick={() => setMobileOpen((prev) => !prev)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+      </div>
 
         {/* Mobile Menu */}
         {mobileOpen && (

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image"; // Added Image import
+import Image from "next/image";
 import { Menu, X, Search, Heart, ShoppingBag, ChevronDown, User as UserIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
@@ -82,7 +82,7 @@ export function Navbar() {
       <div className="w-full px-4 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20 md:h-24">
 
-          {/* Logo */}
+          {/* Logo Section */}
           <Link href="/" className="flex items-center md:mt-2 gap-2 lg:gap-4">
             
             {/* Static Image Container */}
@@ -97,20 +97,24 @@ export function Navbar() {
               />
             </div>
             
-            <div className="flex flex-col items-start justify-center">
+            {/* Professional Text Logo */}
+            <div className="flex flex-col items-start justify-center mt-1">
               <span
-                className="text-lg md:text-xl lg:text-2xl font-light tracking-[0.2em] lg:tracking-[0.3em] uppercase whitespace-nowrap"
-                style={{ fontFamily: "var(--font-serif)", color: "#1a1a1a" }}
+                className="text-3xl md:text-3xl lg:text-4xl font-medium tracking-[0.15em] uppercase whitespace-nowrap"
+                style={{ fontFamily: "var(--font-display)", color: "#1a1a1a" }}
               >
                 BJ{" "}
                 <span
-                  className="gold-text ml-2"
-                  style={{ fontFamily: "var(--font-serif)", color: GOLD }}
+                  className="ml-2"
+                  style={{ fontFamily: "var(--font-display)", color: GOLD }}
                 >
                   JEWELRY
                 </span>
               </span>
-              <span className="hidden lg:block text-[9px] tracking-[0.25em] uppercase mt-1 whitespace-nowrap" style={{ color: GOLD }}>
+              <span 
+                className="hidden lg:block text-[10px] font-semibold tracking-[0.3em] uppercase mt-1 whitespace-nowrap" 
+                style={{ color: "#9ca3af" }}
+              >
                 Founded 2007 · Hyderabad & Chennai
               </span>
             </div>

@@ -3,9 +3,6 @@ import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react";
 
 const COLLECTIONS = [
   { label: "Bridal Jewellery", href: "/collections/bridal" },
-  { label: "Diamond Collection", href: "/collections/diamond" },
-  { label: "Temple Jewellery", href: "/collections/temple" },
-  { label: "Kundan & Polki", href: "/collections/kundan-polki" },
   { label: "Men's Collection", href: "/collections/mens" },
   { label: "Silver Jewellery", href: "/collections/silver" },
   { label: "New Arrivals", href: "/collections/new-arrivals" },
@@ -17,14 +14,12 @@ const TRADE = [
   { label: "OEM Manufacturing", href: "/trade/oem" },
   { label: "Export Programme", href: "/trade/export" },
   { label: "Corporate Gifting", href: "/trade/corporate" },
-  { label: "Gold Investment", href: "/trade/investment" },
   { label: "Repair & Restore", href: "/trade/repair" },
 ];
 
 const INFORMATION = [
   { label: "About BJ Jewelry", href: "/about" },
   { label: "Certifications", href: "/certifications" },
-  { label: "Gold Rate Today", href: "/gold-rate" },
   { label: "Blog & Journal", href: "/blog" },
   { label: "Careers", href: "/careers" },
   { label: "Press & Media", href: "/press" },
@@ -59,7 +54,7 @@ export function Footer() {
                 { icon: Instagram, href: "#", label: "Instagram" },
                 { icon: Facebook, href: "#", label: "Facebook" },
                 { icon: Youtube, href: "#", label: "YouTube" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/bjjewelry/posts/?feedView=all", label: "LinkedIn" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

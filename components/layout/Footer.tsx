@@ -19,10 +19,10 @@ const TRADE = [
 
 const INFORMATION = [
   { label: "About BJ Jewelry", href: "/about" },
-  { label: "Certifications", href: "/certifications" },
-  { label: "Blog & Journal", href: "/blog" },
-  { label: "Careers", href: "/careers" },
-  { label: "Press & Media", href: "/press" },
+  { label: "Certifications", href: "/information/certifications" },
+  { label: "Blog & Journal", href: "/information/blog" },
+  { label: "Careers", href: "/information/careers" },
+  { label: "Press & Media", href: "/information/press" },
   { label: "Contact Us", href: "/contact" },
 ];
 

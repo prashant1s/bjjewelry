@@ -120,10 +120,10 @@ export function Footer() {
           </p>
           <div className="flex gap-6">
             {[
-              { label: "Privacy Policy", href: "/privacy" },
-              { label: "Terms of Sale", href: "/terms" },
-              { label: "Hallmark Policy", href: "/hallmark" },
-              { label: "Sitemap", href: "/sitemap.xml" },
+              { label: "Privacy Policy", href: "/about" },
+              { label: "Terms of Sale", href: "/about" },
+              { label: "Hallmark Policy", href: "/about" },
+              { label: "Sitemap", href: "/about" },//sitemap.xml
             ].map((item) => (
               <Link key={item.href} href={item.href} className="text-white/30 text-xs hover:text-[#C9A84C] transition-colors">
                 {item.label}

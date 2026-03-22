@@ -123,9 +123,9 @@ export function Footer() {
               { label: "Privacy Policy", href: "/about" },
               { label: "Terms of Sale", href: "/about" },
               { label: "Hallmark Policy", href: "/about" },
-              { label: "Sitemap", href: "/about" },//sitemap.xml
+              { label: "Sitemap", href: "/sitemap.xml" },
             ].map((item) => (
-              <Link key={item.href} href={item.href} className="text-white/30 text-xs hover:text-[#C9A84C] transition-colors">
+              <Link key={item.label} href={item.href} className="text-white/30 text-xs hover:text-[#C9A84C] transition-colors">
                 {item.label}
               </Link>
             ))}

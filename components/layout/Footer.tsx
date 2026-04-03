@@ -75,7 +75,7 @@ export function Footer() {
                   label: "WhatsApp",
                 },
 
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
+               
                 { icon: Youtube, href: "#", label: "YouTube" },
                 { icon: Twitter, href: "#", label: "Facebook" },
 

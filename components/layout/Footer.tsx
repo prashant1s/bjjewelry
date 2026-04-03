@@ -1,35 +1,50 @@
 import Link from "next/link";
-import { Instagram, Facebook, Youtube, Linkedin } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+
+import {
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Twitter,
+  TwitterIcon,
+} from "lucide-react";
 
 const COLLECTIONS = [
-  { label: "Bridal Jewellery", href: "/collections/bridal" },
-  { label: "Men's Collection", href: "/collections/mens" },
-  { label: "Silver Jewellery", href: "/collections/silver" },
-  { label: "New Arrivals", href: "/collections/new-arrivals" },
+  { label: "New Arrivals", href: "/collections/bridal" },
+  { label: "Gold Jewellery", href: "/collections/bridal" },
+  { label: "Silver Jewellery", href: "/collections/bridal" },
+  { label: "All Collections", href: "/collections/bridal" },
+  { label: "Corporate Gifting", href: "/collections/corporate" },
+  { label: "Book an Appointment", href: "/collections/new-arrivals" },
+  { label: "Video Call Shopping", href: "/collections/new-arrivals" },
 ];
 
 const TRADE = [
+  { label: "Payment", href: "/information/new-arrivals" },
+  { label: "Careers", href: "/information/careers" },
   { label: "B2B Partnership", href: "/trade/b2b" },
   { label: "Bulk Ordering", href: "/trade/bulk" },
-  { label: "OEM Manufacturing", href: "/trade/oem" },
-  { label: "Export Programme", href: "/trade/export" },
-  { label: "Corporate Gifting", href: "/trade/corporate" },
-  { label: "Repair & Restore", href: "/trade/repair" },
+  { label: "Export & Import", href: "/trade/export" },
+  { label: "Return & Refund", href: "/trade/repair" },
+  { label: "BJ Jewelry Club", href: "/trade/new-arrivals" },
+  { label: "Store Location", href: "/trade/new-arrivals" },
 ];
 
 const INFORMATION = [
-  { label: "About BJ Jewelry", href: "/about" },
-  { label: "Certifications", href: "/information/certifications" },
-  { label: "Blog & Journal", href: "/information/blog" },
-  { label: "Careers", href: "/information/careers" },
-  { label: "Press & Media", href: "/information/press" },
+  { label: "FAQ", href: "/information/oem" },
   { label: "Contact Us", href: "/contact" },
+  { label: "Certifications", href: "/information/certifications" },
+  { label: "Press & Media", href: "/information/about" },
+  { label: "Blog & Journal", href: "/information/blog" },
+  { label: "About BJ Jewelry", href: "/about" },
+  { label: "News & Events", href: "/information/new-arrivals" },
+  { label: "Subscribe to Our Newsletter", href: "/information/new-arrivals" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white">
-
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -47,14 +62,28 @@ export function Footer() {
               </p>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Gold, diamonds, silver, gemstones — every jewel, every occasion, one unwavering commitment to beauty since 2007.
+              Gold, diamonds, silver, gemstones — every jewel, every occasion,
+              one unwavering commitment to beauty since 2007.
             </p>
             <div className="flex gap-4">
               {[
                 { icon: Instagram, href: "#", label: "Instagram" },
                 { icon: Facebook, href: "#", label: "Facebook" },
+                {
+                  icon: MessageCircle,
+                  href: "https://wa.me/91XXXXXXXXXX",
+                  label: "WhatsApp",
+                },
+
+                { icon: Linkedin, href: "#", label: "LinkedIn" },
                 { icon: Youtube, href: "#", label: "YouTube" },
-                { icon: Linkedin, href: "https://www.linkedin.com/company/bjjewelry/posts/?feedView=all", label: "LinkedIn" },
+                { icon: Twitter, href: "#", label: "Facebook" },
+
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/company/bjjewelry/posts/?feedView=all",
+                  label: "LinkedIn",
+                },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -70,11 +99,16 @@ export function Footer() {
 
           {/* Collections */}
           <div>
-            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">Collections</h4>
+            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">
+              Collections
+            </h4>
             <ul className="space-y-2.5">
               {COLLECTIONS.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
+                  <Link
+                    href={item.href}
+                    className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -84,11 +118,16 @@ export function Footer() {
 
           {/* Trade */}
           <div>
-            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">Trade & Services</h4>
+            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">
+              Trade & Services
+            </h4>
             <ul className="space-y-2.5">
               {TRADE.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
+                  <Link
+                    href={item.href}
+                    className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -98,11 +137,16 @@ export function Footer() {
 
           {/* Information */}
           <div>
-            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">Information</h4>
+            <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">
+              Information
+            </h4>
             <ul className="space-y-2.5">
               {INFORMATION.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors">
+                  <Link
+                    href={item.href}
+                    className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -116,7 +160,8 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs">
-            © 2025 BJ Jewelry. All rights reserved. Est. 2007, Hyderabad · Now in Chennai.
+            © 2025 BJ Jewelry. All rights reserved. Est. 2007, Hyderabad · Now
+            in Chennai.
           </p>
           <div className="flex gap-6">
             {[
@@ -125,7 +170,11 @@ export function Footer() {
               { label: "Hallmark Policy", href: "/about" },
               { label: "Sitemap", href: "/sitemap.xml" },
             ].map((item) => (
-              <Link key={item.label} href={item.href} className="text-white/30 text-xs hover:text-[#C9A84C] transition-colors">
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-white/30 text-xs hover:text-[#C9A84C] transition-colors"
+              >
                 {item.label}
               </Link>
             ))}

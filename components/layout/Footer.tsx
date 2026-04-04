@@ -77,7 +77,7 @@ export function Footer() {
 
                
                 { icon: Youtube, href: "#", label: "YouTube" },
-                { icon: Twitter, href: "#", label: "Facebook" },
+                { icon: Twitter, href: "#", label: "Twitter" },
 
                 {
                   icon: Linkedin,

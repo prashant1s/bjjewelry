@@ -67,8 +67,8 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Facebook, href: "#", label: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram" },
+                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" },
                 {
                   icon: MessageCircle,
                   href: "https://wa.me/91XXXXXXXXXX",

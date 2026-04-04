@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 const TRADE_SERVICES = [
   { title: "B2B Partnership", href: "/trade/b2b", desc: "Collaborate with us for exclusive wholesale pricing and priority access to new collections." },
   { title: "Bulk Ordering", href: "/trade/bulk", desc: "Streamlined processes for large volume orders with customized packaging solutions." },
-  { title: "OEM Manufacturing", href: "/trade/oem", desc: "End-to-end custom jewelry manufacturing and design under your brand." },
+  { title: "Careers", href: "/trade/Careers", desc: "join us." },
   { title: "Export Programme", href: "/trade/export", desc: "Fully compliant international shipping, insurance, and export solutions." },
   { title: "Corporate Gifting", href: "/trade/corporate", desc: "Memorable, high-quality jewelry and gold coins for your employees or clients." },
   { title: "Gold Investment", href: "/trade/investment", desc: "Secure your wealth with our verified gold bullion and investment programs." },

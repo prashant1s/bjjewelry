@@ -3,8 +3,8 @@ import { Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MetalTicker } from "@/components/layout/MetalTicker";
-
+// import { MetalTicker } from "@/components/layout/MetalTicker";
+import  MetalRatesSection  from "@/components/sections/MetalRatesSection";
 // 1. IMPORTANT: We import YOUR custom wrapper, not next-auth directly
 import { Providers } from "@/components/Providers";
 
@@ -83,7 +83,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         
         {/* 2. Wrap the app with the custom Providers component */}
         <Providers>
-          <MetalTicker />
+          <MetalRatesSection/>
+          {/* <MetalTicker /> */}
           <Navbar />
           <main>{children}</main>
           <Footer />

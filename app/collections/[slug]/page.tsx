@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import CollectionPageClient from "@/components/collections/CollectionPageClient";
 import { MetalType } from "@prisma/client";
+import {  Category } from "@prisma/client";
 
 // Define possible sort options
 export type SortOption = "price_asc" | "price_desc" | "newest";
@@ -37,7 +38,7 @@ export default async function Page(props: {
 
   // Only filter by category if it's NOT the "new-arrivals" page
   if (resolvedParams.slug !== "new-arrivals") {
-    whereClause.category = resolvedParams.slug.toUpperCase().replace(/-/g, "_");
+    whereClause.category = resolvedParams.slug.toUpperCase().replace(/-/g, "_") as Category;
   }
 
   // Add metal filtering if any are selected
@@ -58,11 +59,6 @@ export default async function Page(props: {
     where: whereClause,
     orderBy: orderByClause,
   });
-
-  // If no products match the category at all, show 404
-  if (!products && resolvedParams.slug !== "new-arrivals") {
-    notFound();
-  }
 
   return (
     <div className="min-h-screen bg-white">

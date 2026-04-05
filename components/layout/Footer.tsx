@@ -11,35 +11,35 @@ import {
 } from "lucide-react";
 
 const COLLECTIONS = [
-  { label: "New Arrivals", href: "/collections/bridal" },
-  { label: "Gold Jewellery", href: "/collections/bridal" },
-  { label: "Silver Jewellery", href: "/collections/bridal" },
-  { label: "All Collections", href: "/collections/bridal" },
-  { label: "Corporate Gifting", href: "/collections/corporate" },
-  { label: "Book an Appointment", href: "/collections/new-arrivals" },
-  { label: "Video Call Shopping", href: "/collections/new-arrivals" },
+  { label: "New Arrivals", href: "/collections/new-arrivals" }, 
+  { label: "Gold Jewellery", href: "/collections/gold" },
+  { label: "Silver Jewellery", href: "/collections/silver" }, 
+  { label: "All Collections", href: "/collections" }, 
+  { label: "Corporate Gifting", href: "/collections/corporate-gifting" }, 
+  { label: "Book an Appointment", href: "/appointments" }, 
+  { label: "Video Call Shopping", href: "/appointments" },
 ];
 
 const TRADE = [
-  { label: "Payment", href: "/information/new-arrivals" },
+  { label: "Payment", href: "/information/Payment" },
   { label: "Careers", href: "/information/careers" },
   { label: "B2B Partnership", href: "/trade/b2b" },
   { label: "Bulk Ordering", href: "/trade/bulk" },
   { label: "Export & Import", href: "/trade/export" },
-  { label: "Return & Refund", href: "/trade/repair" },
-  { label: "BJ Jewelry Club", href: "/trade/new-arrivals" },
-  { label: "Store Location", href: "/trade/new-arrivals" },
+  { label: "Return & Refund", href: "/trade/return-refund" },
+  { label: "BJ Jewelry Club", href: "/trade/BJ-Jewelry-Club" },
+  { label: "Store Location", href: "/trade/Store-Location" },
 ];
 
 const INFORMATION = [
-  { label: "FAQ", href: "/information/oem" },
+  { label: "FAQ", href: "/information/FAQ" },
   { label: "Contact Us", href: "/contact" },
   { label: "Certifications", href: "/information/certifications" },
-  { label: "Press & Media", href: "/information/about" },
+  { label: "Press & Media", href: "/information/Press-Media" },
   { label: "Blog & Journal", href: "/information/blog" },
   { label: "About BJ Jewelry", href: "/about" },
-  { label: "News & Events", href: "/information/new-arrivals" },
-  { label: "Subscribe to Our Newsletter", href: "/information/new-arrivals" },
+  { label: "News & Events", href: "/information/Press-Media" },
+  { label: "Subscribe to Our Newsletter", href: "/information/Subscribe" },
 ];
 
 export function Footer() {
@@ -68,17 +68,14 @@ export function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram" },
-                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" },
+                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" ,color: "#E1306C"},
                 {
                   icon: MessageCircle,
                   href: "https://wa.me/91XXXXXXXXXX",
-                  label: "WhatsApp",
+                  label: "WhatsApp",color: "#25D366"
                 },
-
-               
                 { icon: Youtube, href: "#", label: "YouTube" },
                 { icon: Twitter, href: "#", label: "Twitter" },
-
                 {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/company/bjjewelry/posts/?feedView=all",
@@ -96,7 +93,6 @@ export function Footer() {
               ))}
             </div>
           </div>
-
           {/* Collections */}
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-5">
@@ -104,7 +100,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {COLLECTIONS.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <Link
                     href={item.href}
                     className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors"
@@ -142,7 +138,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {INFORMATION.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <Link
                     href={item.href}
                     className="text-sm text-white/50 hover:text-[#C9A84C] transition-colors"

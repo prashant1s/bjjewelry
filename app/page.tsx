@@ -1,5 +1,5 @@
 import { HeroSection } from "@/components/sections/HeroSection";
-import  MetalRatesSection  from "@/components/sections/MetalRatesSection";
+// import  MetalRatesSection  from "@/components/sections/MetalRatesSection";
 import { CollectionsSection } from "@/components/sections/CollectionsSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { WhyBJSection } from "@/components/sections/WhyBJSection";
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <MetalRatesSection />
+      {/* <MetalRatesSection /> */}
       <CollectionsSection />
       <StatsSection />
       <WhyBJSection />

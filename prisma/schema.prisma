@@ -187,14 +187,11 @@ enum MetalType {
   GOLD_18K
   SILVER
   PLATINUM
-  DIAMOND
-  KUNDAN
-  GEMSTONE
 }
 
 enum Category {
+  GOLD
   BRIDAL
-  DIAMOND
   TEMPLE
   KUNDAN_POLKI
   MENS

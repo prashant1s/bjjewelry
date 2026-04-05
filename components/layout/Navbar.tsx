@@ -17,13 +17,13 @@ const NAV_LINKS: NavLink[] = [
     label: "Collections",
     href: "/collections",
     children: [
-      { label: "Bridal Jewellery", href: "/collections/bridal" },
-      { label: "Diamond Collection", href: "/collections/diamond" },
-      { label: "Temple Jewellery", href: "/collections/temple" },
-      { label: "Kundan & Polki", href: "/collections/kundan-polki" },
-      { label: "Men's Collection", href: "/collections/mens" },
-      { label: "Silver Jewellery", href: "/collections/silver" },
       { label: "New Arrivals", href: "/collections/new-arrivals" },
+      { label: "Gold Jewellery", href: "/collections/gold" },
+      { label: "All Collections", href: "/collections" },
+      { label: "Corporate Gifting", href: "/collections/corporate-gifting" },
+      { label: "Book an Appointment", href: "/appointments" },
+      { label: "Silver Jewellery", href: "/collections/silver" },
+      { label: "Video Call Shopping", href: "/appointments" },
     ],
   },
   {
@@ -168,8 +168,6 @@ export function Navbar() {
               </div>
             ))}
           </nav>
-
-          {/* Right Actions */}
           <div className="flex items-center gap-4">
             <Link
               href={session ? "/account" : "/login"}
@@ -196,23 +194,12 @@ export function Navbar() {
             >
               <Heart className="w-5 h-5" />
             </button>
-            <button
-              className="transition-colors"
-              style={{ color: NAV_TEXT }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = NAV_TEXT)}
-              aria-label="Cart"
-            >
-              <ShoppingBag className="w-5 h-5" />
-            </button>
-
             <Link
               href="/appointments"
               className="hidden md:inline-flex btn-gold text-[10px] py-2.5 px-5 rounded-full"
             >
               Book Appointment
             </Link>
-
             <button
               className="md:hidden"
               style={{ color: NAV_TEXT }}
@@ -226,7 +213,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-yellow-200/40">
@@ -259,7 +245,6 @@ export function Navbar() {
                     </button>
                   )}
                 </div>
-
                 {link.children && mobileExpanded === link.label && (
                   <div className="pl-4 space-y-1 mt-1">
                     {link.children.map((child) => (
@@ -276,7 +261,6 @@ export function Navbar() {
                 )}
               </div>
             ))}
-
             <div className="pt-4">
               <Link
                 href="/appointments"

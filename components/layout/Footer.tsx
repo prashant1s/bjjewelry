@@ -68,11 +68,11 @@ export function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram" },
-                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" ,color: "#E1306C"},
+                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" },
                 {
                   icon: MessageCircle,
-                  href: "https://wa.me/91XXXXXXXXXX",
-                  label: "WhatsApp",color: "#25D366"
+                  href: "https://wa.me/9444963811",
+                  label: "WhatsApp"
                 },
                 { icon: Youtube, href: "#", label: "YouTube" },
                 { icon: Twitter, href: "#", label: "Twitter" },

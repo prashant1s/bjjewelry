@@ -285,7 +285,7 @@ export function FAQSection() {
           </div>
           <div className="flex flex-wrap gap-3 flex-shrink-0">
             <a
-              href="https://wa.me/919676343210?text=Hello,%20I%20have%20a%20B2B%20trade%20enquiry"
+              href="https://wa.me/919444963811?text=Hello,%20I%20have%20a%20B2B%20trade%20enquiry"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold text-[10px] py-2.5 px-5"

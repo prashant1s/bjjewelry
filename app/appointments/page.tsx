@@ -208,7 +208,7 @@ export default function AppointmentsPage() {
 
           {status === "error" && (
             <p className="text-red-500 text-sm text-center">
-              Something went wrong. Please try again or call us at +91 96763 43210.
+              Something went wrong. Please try again or call us at +91 9444963811.
             </p>
           )}
         </form>

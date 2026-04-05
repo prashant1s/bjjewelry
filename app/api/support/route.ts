@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           <p>Dear ${data.name},</p>
           <p>We have received your message and will get back to you within 24 hours.</p>
           <p>Your ticket reference: <strong>#${ticket.id.slice(-6).toUpperCase()}</strong></p>
-          <p>For urgent matters, WhatsApp us at <strong>+91 96763 43210</strong>.</p>
+          <p>For urgent matters, WhatsApp us at <strong>+91 9444963811</strong>.</p>
         </div>
       `,
     }).catch(console.error);

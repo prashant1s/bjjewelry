@@ -97,7 +97,7 @@ export default function ContactPage() {
 
             <div className="space-y-6 mb-10">
               {[
-                { icon: Phone, label: "Phone", value: "+91 96763 43210", href: "tel:+919676343210" },
+                { icon: Phone, label: "Phone", value: "+91 9444963811", href: "tel:+919444963811" },
                 { icon: Mail, label: "Email", value: "hello@bjjewelry.in", href: "mailto:hello@bjjewelry.in" },
                 { icon: MapPin, label: "Hyderabad Showroom", value: "Banjara Hills, Hyderabad – 500034", href: "#" },
                 { icon: MapPin, label: "Chennai Showroom", value: "Anna Nagar, Chennai – 600040", href: "#" },
@@ -127,7 +127,7 @@ export default function ContactPage() {
                 Get instant responses on WhatsApp. Share product photos, track orders, or ask about custom designs.
               </p>
               <a
-                href="https://wa.me/919676343210?text=Hello%20BJ%20Jewelry"
+                href="https://wa.me/919444963811?text=Hello%20BJ%20Jewelry"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold inline-flex items-center gap-2"

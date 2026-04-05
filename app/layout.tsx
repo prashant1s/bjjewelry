@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* WhatsApp floating button */}
         <a
-          href="https://wa.me/919676343210?text=Hello%20BJ%20Jewelry"
+          href="https://wa.me/919444963811?text=Hello%20BJ%20Jewelry"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 w-14 h-14 flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-110"

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { SocialIcon } from "react-social-icons";
+// import { MessageCircle } from "lucide-react";
 
 import {
   Instagram,
@@ -11,12 +12,12 @@ import {
 } from "lucide-react";
 
 const COLLECTIONS = [
-  { label: "New Arrivals", href: "/collections/new-arrivals" }, 
+  { label: "New Arrivals", href: "/collections/new-arrivals" },
   { label: "Gold Jewellery", href: "/collections/gold" },
-  { label: "Silver Jewellery", href: "/collections/silver" }, 
-  { label: "All Collections", href: "/collections" }, 
-  { label: "Corporate Gifting", href: "/collections/corporate-gifting" }, 
-  { label: "Book an Appointment", href: "/appointments" }, 
+  { label: "Silver Jewellery", href: "/collections/silver" },
+  { label: "All Collections", href: "/collections" },
+  { label: "Corporate Gifting", href: "/collections/corporate-gifting" },
+  { label: "Book an Appointment", href: "/appointments" },
   { label: "Video Call Shopping", href: "/appointments" },
 ];
 
@@ -65,31 +66,25 @@ export function Footer() {
               Gold, diamonds, silver, gemstones — every jewel, every occasion,
               one unwavering commitment to beauty since 2007.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-2">
               {[
-                { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram"},
-                { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" },
-                {
-                  icon: MessageCircle,
-                  href: "https://wa.me/9444963811",
-                  label: "WhatsApp"
-                },
-                { icon: Youtube, href: "#", label: "YouTube" },
-                { icon: Twitter, href: "#", label: "Twitter" },
-                {
-                  icon: Linkedin,
-                  href: "https://www.linkedin.com/company/bjjewelry/posts/?feedView=all",
-                  label: "LinkedIn",
-                },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-all"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
+                "https://wa.me/9444963811",
+                "https://www.instagram.com/bjjewelryb2b/",
+                "https://www.facebook.com/bjjewelryb2b",
+                "https://www.linkedin.com/company/bjjewelry/",
+                "https://pinterest.com/bjjewelryb2b",
+                "https://youtube.com/",
+                "https://twitter.com/",
+              ].map((url) => (
+                <SocialIcon
+                  key={url}
+                  url={url}
+                  target="_blank"
+                  // 36px matches your original w-9 h-9 sizing exactly!
+                  style={{ height: 36, width: 36 }}
+                  // Keeps the smooth hover pop effect
+                  className="flex-shrink-0 transition-transform duration-300 hover:scale-110"
+                />
               ))}
             </div>
           </div>

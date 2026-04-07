@@ -32,7 +32,7 @@ const TRADE = [
 ];
 
 const INFORMATION = [
-  { label: "FAQ", href: "/information/FAQ" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Contact Us", href: "/contact" },
   { label: "Certifications", href: "/information/certifications" },
   { label: "Press & Media", href: "/information/Press-Media" },
@@ -67,7 +67,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram" },
+                { icon: Instagram, href: "https://www.instagram.com/bjjewelryb2b/", label: "Instagram"},
                 { icon: Facebook, href: "https://www.facebook.com/bjjewelryb2b", label: "Facebook" },
                 {
                   icon: MessageCircle,

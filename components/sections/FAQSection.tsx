@@ -159,7 +159,7 @@ export function FAQSection() {
   const rightGroups = [FAQ_DATA[1], FAQ_DATA[2]];
 
   return (
-    <section className="bg-[#111111] py-20 relative overflow-hidden">
+    <section id="faq" className="bg-[#111111]  py-20 relative overflow-hidden">
       {/* Subtle background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"

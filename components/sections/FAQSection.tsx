@@ -19,81 +19,125 @@ const FAQ_DATA: FAQGroup[] = [
   {
     category: "Partnership & Ordering",
     items: [
-      {
-        question: "What is the minimum order for wholesale?",
+         {
+        question: "What products do you offer?",
         answer:
-          "Our minimum wholesale order starts at ₹1,00,000 (approx. 1 lakh) for registered B2B partners. For first-time trade enquiries, we offer a trial order facility starting at ₹50,000 so you can assess quality before committing to larger volumes.",
+          "We offer a wide range of jewellery collections including- Anklets,Bangles,Bracelets (Men, Women, Unisex),Chains (Men, Women, Unisex),Necklaces,Belly Chains,Watches (Men, Women, Unisex),Jewellery Purses,Phone Covers (Jewellery Accessories).We also provide custom-designed jewellery based on your business requirements.",
       },
       {
-        question: "How do I become a registered trade partner?",
+        question: "What is the minimum order quantity (MOQ)?",
         answer:
-          "Submit your business details through our B2B Partnership page — we need your GST number, business registration, and showroom address. Our trade team reviews applications within 48 hours. Approved partners get a dedicated account manager, exclusive pricing tiers, and access to the B2B catalogue.",
+          "Our standard MOQ is-500 grams per design,In special cases: 250 grams For OEM/custom designs-Minimum starts from 50 pieces or 500 grams per design",
       },
       {
-        question: "Is credit available for B2B partners?",
+        question: "Do you support small businesses?",
         answer:
-          "Yes. Verified trade partners with a minimum 3-month order history are eligible for 30-day net credit terms. Credit limits are set based on your average monthly order value and business verification. Contact your account manager to apply.",
+          "Yes, we offer flexible MOQ (starting from 250g in special cases) to support growing businesses.",
       },
       {
-        question: "What karat options are available for wholesale?",
+        question: "Can I see products before ordering?",
         answer:
-          "We supply 24K (99.9% pure), 22K (91.6%), 18K (75%), and 14K gold. All pieces are BIS hallmarked. We also offer 925 sterling silver, platinum, and custom alloy compositions for OEM orders. Karat options vary by product category.",
+          "Yes, you can:Request catalogue access, Book a video call consultation",
+      },
+      {
+        question: "Do you provide ready stock or only custom orders?",
+        answer:
+          "We offer both-Ready stock (fast-moving designs) & Made-to-order / custom manufacturing",
+      },
+      {
+        question: "Are your products certified?",
+        answer:
+          "Yes, all our jewellery is BIS Hallmark Certified, ensuring purity and authenticity.",
+      },
+      {
+        question: "Are you a manufacturer?",
+        answer:
+          "No, we are not direct manufacturers.We work with 150+ trusted manufacturing partners to deliver high-quality and scalable jewellery supply.",
+      },
+       {
+        question: "What metals do you specialize in?",
+        answer:
+          "We specialize in::92.5 Silver Jewellery, 916 Gold Jewellery",
+      },
+      {
+        question: "How can I access your catalogue and pricing?",
+        answer:
+          "You need to register for a B2B account.After approval, you will get access to:Full catalogue,Pricing details,Latest collections",
       },
     ],
   },
   {
-    category: "OEM, Export & Delivery",
+    category: " OEM, Export & Delivery",
     items: [
-      {
-        question: "Do you offer custom / OEM manufacturing?",
+       {
+        question: " Do you offer private labeling?",
         answer:
-          "Yes — OEM is one of our core services. Share your CAD files, sketches, or reference photos and we'll produce a sample within 7–10 working days. Minimum OEM quantity starts at 50 pieces per design. We sign NDAs to protect your IP.",
+          "Yes, we support private labeling and branding for businesses.",
+      },
+       {
+        question: " How do you ensure quality?",
+        answer:
+          "We maintain quality through: Verified manufacturing partners, Strict quality checks, BIS Hallmark certification",
+      },
+        {
+        question: " Can I request specific designs for my market?",
+        answer:
+          "Yes, we can develop market-specific collections based on your target audience and trends",
       },
       {
-        question: "Which countries do you export to?",
+        question: " Do you export internationally?",
         answer:
-          "We currently export to the UAE, USA, UK, Singapore, Malaysia, Australia, and Canada. All export shipments come with a BIS hallmark certificate, country-of-origin certificate, and are fully insured. Customs documentation is handled by us.",
+          "Yes, we export to:North America,Europe & UK,Middle East,Asia-Pacific,South America",
       },
       {
-        question: "How are wholesale orders shipped?",
+        question: "Do you offer custom or OEM manufacturing?",
         answer:
-          "Domestic orders above ₹1 lakh ship free via insured courier (Brinks/Sequel). Delivery is 3–5 business days to metro cities, 5–7 days elsewhere. For export, we use FedEx International Priority with full insurance. Tracking is provided at dispatch.",
+          "Yes, we provide custom/OEM manufacturing services.You can share-CAD designs,Sketches,Reference images. We will develop a sample within 7–15 working days.",
       },
       {
-        question: "What is the exchange and buy-back policy for trade?",
-        answer:
-          "B2B partners enjoy a 90-day exchange policy on unsold stock (subject to a 2% handling fee). Buy-back is available at prevailing gold rates minus making charges. All exchange and buy-back requests must be initiated through your account manager.",
+        question: "What is the sample development timeline?",
+        answer:"For custom/OEM designs:👉 Sample development take 7–15working days",
       },
+       {
+        question: "How long does order delivery take?",
+        answer:
+          "Delivery depends on-Order quantity,Product type,Location.We ensure timely dispatch and reliable delivery",
+      },
+      {
+        question: "Do you deliver across India?",
+        answer:
+          "Yes, we offer Pan India delivery with reliable logistics.",
+      },
+        {
+        question: "Do you offer bulk pricing advantages?",
+        answer:
+          "Yes, we provide competitive bulk pricing based on order volume and partnership level",
+      },
+      {
+        question: "How do I start working with BJ Jewelry?",
+        answer:
+          "Simple steps👉Register on our website👉 Get approval👉 Access catalog & pricing 👉Start placing orders",
+      },
+         {
+        question: "Why should I choose BJ Jewelry?",
+        answer:
+          "19+ years experience,150+ manufacturing partners,  Flexible MOQOEM & custom support, Pan India + global supply, Trust-driven B2B relationships.",
+      },
+   
     ],
   },
-  {
-    category: "Pricing & Certification",
-    items: [
-      {
-        question: "How is the wholesale price calculated?",
-        answer:
-          "Wholesale pricing = (live gold rate × weight × purity) + making charges − trade discount. Trade discounts range from 8% to 20% depending on your partner tier (Silver, Gold, Platinum). Live rates are locked at the time of order confirmation.",
-      },
-      {
-        question: "Are all pieces BIS hallmarked?",
-        answer:
-          "Every piece we supply carries a BIS (Bureau of Indian Standards) hallmark — the HUID number, karat mark, BIS logo, and year of hallmarking are stamped on each item. We never supply unmarked jewellery, regardless of order size.",
-      },
-      {
-        question: "Do you provide a certificate of authenticity?",
-        answer:
-          "Yes. Each order ships with a product-wise certificate listing metal type, purity, weight, stone details (if any), and HUID. For diamond pieces, we include the GIA or IGI grading report per stone.",
-      },
-      {
-        question: "Can prices be locked for large forward orders?",
-        answer:
-          "Yes — for orders above ₹25 lakh, we offer a price-lock facility against a 10% advance deposit. The rate is fixed at the MCX gold price on the day of booking for up to 60 days.",
-      },
-    ],
-  },
+  
 ];
 
-function FAQItem({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
+function FAQItem({
+  item,
+  isOpen,
+  onToggle,
+}: {
+  item: FAQItem;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
     <div className="border-b border-white/10 last:border-0">
       <button
@@ -103,7 +147,7 @@ function FAQItem({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; o
         <span
           className={cn(
             "text-sm md:text-base transition-colors duration-200 pr-8",
-            isOpen ? "text-[#C9A84C]" : "text-white/80 group-hover:text-white"
+            isOpen ? "text-[#C9A84C]" : "text-white/80 group-hover:text-white",
           )}
         >
           {item.question}
@@ -113,10 +157,14 @@ function FAQItem({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; o
             "flex-shrink-0 w-7 h-7 border flex items-center justify-center transition-all duration-200",
             isOpen
               ? "border-[#C9A84C] text-[#C9A84C] rotate-0"
-              : "border-white/20 text-white/40 group-hover:border-white/50"
+              : "border-white/20 text-white/40 group-hover:border-white/50",
           )}
         >
-          {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+          {isOpen ? (
+            <Minus className="w-3.5 h-3.5" />
+          ) : (
+            <Plus className="w-3.5 h-3.5" />
+          )}
         </span>
       </button>
 
@@ -276,7 +324,10 @@ export function FAQSection() {
           className="mt-14 border border-white/10 bg-white/[0.03] px-8 py-7 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div>
-            <p className="text-white font-light text-lg" style={{ fontFamily: "var(--font-serif)" }}>
+            <p
+              className="text-white font-light text-lg"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
               Still have questions about our trade programme?
             </p>
             <p className="text-white/40 text-sm mt-1">
@@ -292,7 +343,10 @@ export function FAQSection() {
             >
               WhatsApp Trade Team
             </a>
-            <a href="/trade/b2b" className="btn-outline-gold text-[10px] py-2.5 px-5">
+            <a
+              href="/trade/b2b"
+              className="btn-outline-gold text-[10px] py-2.5 px-5"
+            >
               B2B Partnership
             </a>
           </div>

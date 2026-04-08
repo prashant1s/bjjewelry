@@ -847,7 +847,7 @@ export function Footer() {
           <h4 className="mt-1 text-sm tracking-[0.3em] uppercase text-[#C9A84C] text-center md:text-left">
             Accepted Payment Methods
           </h4>
-          <div className="flex flex-wrap gap-3 py-1.5 justify-center md:justify-start w-full">
+          <div className="flex flex-wrap gap-3 py-1.5 justify-center md:justify-center w-full">
             {[
               { src: "/images/payments/amazon-pay.svg", alt: "Amazon Pay" },
               { src: "/images/payments/american-express.svg", alt: "American Express" },

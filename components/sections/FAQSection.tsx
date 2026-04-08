@@ -17,7 +17,7 @@ interface FAQGroup {
 
 const FAQ_DATA: FAQGroup[] = [
   {
-    category: "Partnership & Ordering",
+    category: "Partnership, Pricing & Ordering",
     items: [
          {
         question: "What products do you offer?",
@@ -43,6 +43,11 @@ const FAQ_DATA: FAQGroup[] = [
         question: "Do you provide ready stock or only custom orders?",
         answer:
           "We offer both-Ready stock (fast-moving designs) & Made-to-order / custom manufacturing",
+      },
+      {
+        question: "Do you offer bulk pricing advantages?",
+        answer:
+          "Yes, we provide competitive bulk pricing based on order volume and partnership level",
       },
       {
         question: "Are your products certified?",
@@ -108,11 +113,7 @@ const FAQ_DATA: FAQGroup[] = [
         answer:
           "Yes, we offer Pan India delivery with reliable logistics.",
       },
-        {
-        question: "Do you offer bulk pricing advantages?",
-        answer:
-          "Yes, we provide competitive bulk pricing based on order volume and partnership level",
-      },
+        
       {
         question: "How do I start working with BJ Jewelry?",
         answer:
@@ -204,7 +205,7 @@ export function FAQSection() {
 
   // Split into two columns (first two groups left, last one right with second)
   const leftGroups = [FAQ_DATA[0]];
-  const rightGroups = [FAQ_DATA[1], FAQ_DATA[2]];
+  const rightGroups = [FAQ_DATA[1]];
 
   return (
     <section id="faq" className="bg-[#111111]  py-20 relative overflow-hidden">

@@ -849,14 +849,15 @@ export function Footer() {
           </h4>
           <div className="flex flex-wrap gap-3 py-1.5 justify-center md:justify-center w-full">
             {[
-              { src: "/images/payments/amazon-pay.svg", alt: "Amazon Pay" },
+              { src: "/images/payments/phonepay.svg", alt: "phonepe" },
               { src: "/images/payments/american-express.svg", alt: "American Express" },
-              { src: "/images/payments/apple-pay.svg", alt: "Apple Pay" },
               { src: "/images/payments/discover.svg", alt: "Discover" },
               { src: "/images/payments/google-pay.svg", alt: "Google Pay" },
               { src: "/images/payments/mastercard-alt.svg", alt: "Mastercard" },
               { src: "/images/payments/paypal.svg", alt: "PayPal" },
+              { src: "/images/payments/upi.svg", alt: "UPI" },
               { src: "/images/payments/visa.svg", alt: "Visa" },
+              // { src: "/images/payments/Razorpay.webp", alt: "razorpay" },
             ].map((logo) => (
               <Image
                 key={logo.alt}
@@ -864,7 +865,7 @@ export function Footer() {
                 alt={logo.alt}
                 width={50} // Added explicit width
                 height={40} // Added explicit height
-                className="h-2 md:h-10 w-auto border border-white/10 rounded-lg p-1.5 bg-white/5 object-contain"
+                className="h-9 md:h-11 w-auto border border-white/10 rounded-lg p-1.5 bg-white/5 object-contain"
               />
             ))}
           </div>

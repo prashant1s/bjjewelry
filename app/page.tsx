@@ -6,12 +6,14 @@ import { WhyBJSection } from "@/components/sections/WhyBJSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { AppointmentSection } from "@/components/sections/AppointmentSection";
+import { StickyPartnerBar } from "@/components/sections/StickyPartner";
+
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      {/* <MetalRatesSection /> */}
+     <StickyPartnerBar />
       <CollectionsSection />
       <StatsSection />
       <WhyBJSection />

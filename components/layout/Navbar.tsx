@@ -438,7 +438,7 @@ export function Navbar() {
                     <div className="bg-white border border-yellow-200 shadow-xl rounded-sm p-8 flex gap-12 w-max">
                       {MINIMAL_COLLECTIONS.map((colGroup) => (
                         <div key={colGroup.title} className="flex flex-col ">
-                          <h3 className="text-[10px] font-bold text-[#1a1a1a] tracking-[0.2em] uppercase mb-4 border-b border-yellow-100 pb-2">
+                          <h3 className="text-[10px] py-0.5 font-bold text-[#1a1a1a] tracking-[0.2em] uppercase mb-4 border-b border-yellow-100 pb-2">
                             {colGroup.title}
                           </h3>
                           <div className="space-y-4">

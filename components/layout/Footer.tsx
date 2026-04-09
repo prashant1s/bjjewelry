@@ -719,8 +719,7 @@ export function Footer() {
               </p>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Gold, diamonds, silver, gemstones — every jewel, every occasion,
-              one unwavering commitment to beauty since 2007.
+             Since 2007, BJ Jewelry has been a trusted B2B partner for 92.5 silver and 916 gold. We supply premium, BIS Hallmark Certified collections to retailers worldwide through a strategic network of 150+ manufacturers.
             </p>
             <div className="flex gap-2 mb-10">
               {[

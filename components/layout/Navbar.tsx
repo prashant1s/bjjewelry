@@ -432,7 +432,6 @@ export function Navbar() {
                     />
                   )}
                 </Link>
-
                 {/* MINIMAL COLLECTIONS DROPDOWN */}
                 {link.label === "Collections" && activeDropdown === "Collections" && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-auto transition-opacity duration-200">
@@ -442,7 +441,7 @@ export function Navbar() {
                           <h3 className="text-[10px] font-bold text-[#1a1a1a] tracking-[0.2em] uppercase mb-4 border-b border-yellow-100 pb-2">
                             {colGroup.title}
                           </h3>
-                          <div className="space-y-2">
+                          <div className="space-y-4">
                             {colGroup.items.map((item) => (
                               <Link
                                 key={item.label}
@@ -461,13 +460,13 @@ export function Navbar() {
 
                 {/* STANDARD DROPDOWN (Trade & Services) */}
                 {link.children && link.label !== "Collections" && activeDropdown === link.label && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 transition-opacity duration-200">
-                    <div className="bg-white border border-yellow-200 shadow-xl min-w-[220px] py-3 rounded-sm">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-1 z-50 transition-opacity duration-200">
+                    <div className="bg-white border border-yellow-200 shadow-xl min-w-[220px] py-2 rounded-sm">
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-6 py-2.5 text-[11px] tracking-widest uppercase text-neutral-500 transition-colors hover:text-[#c9a030] hover:bg-yellow-50"
+                          className="block px-6 py-2 text-[11px] tracking-widest uppercase text-neutral-500 transition-colors hover:text-[#c9a030] hover:bg-yellow-50"
                         >
                           {child.label}
                         </Link>

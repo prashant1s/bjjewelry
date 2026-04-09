@@ -78,7 +78,7 @@ export default function AboutPage() {
                   <br />
                   Scalable bulk supply
                   <br />
-                   Reliable & Transparent Business <br />
+                  Reliable & Transparent Business <br />
                   Competitive pricing.
                 </span>
               ),
@@ -106,13 +106,12 @@ export default function AboutPage() {
               title: "Heritage",
               desc: (
                 <span>
-                   Rooted in Hyderabad&aposs Nizami jewellery tradition since
-                  2007.<br />
+                  Rooted in Hyderabad&aposs Nizami jewellery tradition since
+                  2007.
+                  <br />
                   19+ Years Industry Experience <br />
                   150+ Manufacturing Partners <br />
                   Pan India & Global Supply
-                 
-                 
                 </span>
               ),
             },
@@ -134,30 +133,61 @@ export default function AboutPage() {
         </div>
 
         {/* 🌟 Leadership Team Section */}
-        <div className="py-20 border-t border-[#f2d98a]/30">
+        <div className="py-16 mt-10 border-t border-[#f2d98a]/30">
           <div className="text-center py-6 mb-12">
-            <h2 className="text-3xl font-light tracking-widest uppercase text-[#1a1a1a] mb-2" style={{ fontFamily: "var(--font-serif)" }}>
+            <h2
+              className="text-3xl font-light tracking-widest uppercase text-[#1a1a1a] mb-2"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
               Leadership Team
             </h2>
             <div className="w-12 h-px bg-[#C9A84C] mx-auto" />
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { name: "Mr. Sukhdev", role: "Founder", bio: "30+ years in the jewellery industry. Founded BJ Jewelry in 2007 with a vision built on trust, quality, and long-term relationships." },
-              { name: "Mr. Prakash Patel", role: "CEO", bio: "25+ years in the B2B silver sector with deep market expertise and strategic business insight." },
-              { name: "Mr. Mahender Patel", role: "Manager", bio: "22+ years of experience specializing in silver jewellery craftsmanship and operational excellence." },
-              { name: "Mr. Sunil", role: "Sales & Business Development", bio: "5+ years of experience in client relations and scaling business development across multiple sectors." }
+              {
+                name: "Mr. Sukhdev",
+                role: "Founder",
+                bio: "30+ years in the jewellery industry. Founded BJ Jewelry in 2007 with a vision built on trust, quality, and long-term relationships.",
+              },
+              {
+                name: "Mr. Prakash Patel",
+                role: "CEO",
+                bio: "25+ years in the B2B silver sector with deep market expertise and strategic business insight.",
+              },
+              {
+                name: "Mr. Mahender Patel",
+                role: "Manager",
+                bio: "22+ years of experience specializing in silver jewellery craftsmanship and operational excellence.",
+              },
+              {
+                name: "Mr. Sunil",
+                role: "Sales & Business Development",
+                bio: "5+ years of experience in client relations and scaling business development across multiple sectors.",
+              },
             ].map((member) => (
-              <div key={member.name} className="p-6 bg-[#FAF7F2] border-l-2 border-[#C9A84C]">
-                <h3 className="text-[#C9A84C] font-medium tracking-wide uppercase text-xs mb-1">{member.role}</h3>
-                <h4 className="text-xl font-light text-[#1a1a1a] mb-3" style={{ fontFamily: "var(--font-serif)" }}>{member.name}</h4>
-                <p className="text-[#6a6a6a] text-sm leading-relaxed">{member.bio}</p>
+              <div
+                key={member.name}
+                className="p-6 bg-[#FAF7F2] border-l-2 border-[#C9A84C]"
+              >
+                <h3 className="text-[#C9A84C] font-medium tracking-wide uppercase text-xs mb-1">
+                  {member.role}
+                </h3>
+                <h4
+                  className="text-xl font-light text-[#1a1a1a] mb-3"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  {member.name}
+                </h4>
+                <p className="text-[#6a6a6a] text-sm leading-relaxed">
+                  {member.bio}
+                </p>
               </div>
             ))}
           </div>
         </div>
-       
+
         {/* CTA */}
         <div className="text-center border border-[#f2d98a]/50 bg-[#FAF7F2] p-12">
           <h2

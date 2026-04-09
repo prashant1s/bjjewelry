@@ -729,7 +729,7 @@ export function Footer() {
                 "https://www.linkedin.com/company/bjjewelry/",
                 "https://pinterest.com/bjjewelryb2b",
                 "https://youtube.com/",
-                "https://twitter.com/",
+               
               ].map((url) => (
                 <SocialIcon
                   key={url}

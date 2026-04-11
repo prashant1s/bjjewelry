@@ -188,13 +188,15 @@ function FAQItem({
     </div>
   );
 }
-
 export function FAQSection() {
   const [openItems, setOpenItems] = useState<Record<string, number | null>>({
     "Partnership & Ordering": null,
     "OEM, Export & Delivery": null,
     "Pricing & Certification": null,
   });
+
+  // 👇 New state to track if we are showing the short or full list
+  const [isExpanded, setIsExpanded] = useState(false);
 
   function toggle(category: string, index: number) {
     setOpenItems((prev) => ({
@@ -203,12 +205,22 @@ export function FAQSection() {
     }));
   }
 
-  // Split into two columns (first two groups left, last one right with second)
-  const leftGroups = [FAQ_DATA[0]];
-  const rightGroups = [FAQ_DATA[1]];
+  // 👇 Slice the data based on whether the section is expanded
+  const leftGroups = [
+    {
+      ...FAQ_DATA[0],
+      items: isExpanded ? FAQ_DATA[0].items : FAQ_DATA[0].items.slice(0, 3), // Show 3 items initially
+    },
+  ];
+  const rightGroups = [
+    {
+      ...FAQ_DATA[1],
+      items: isExpanded ? FAQ_DATA[1].items : FAQ_DATA[1].items.slice(0, 2), // Show 2 items initially
+    },
+  ];
 
   return (
-    <section id="faq" className="bg-[#111111]  py-20 relative overflow-hidden">
+    <section id="faq" className="bg-[#111111] py-20 relative overflow-hidden">
       {/* Subtle background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -255,7 +267,7 @@ export function FAQSection() {
         </div>
 
         {/* Two-column FAQ layout */}
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 transition-all duration-500">
           {/* Left column */}
           <div className="space-y-10">
             {leftGroups.map((group) => (
@@ -272,7 +284,7 @@ export function FAQSection() {
                 >
                   {group.category}
                 </h3>
-                <div>
+                <motion.div layout>
                   {group.items.map((item, i) => (
                     <FAQItem
                       key={i}
@@ -281,7 +293,7 @@ export function FAQSection() {
                       onToggle={() => toggle(group.category, i)}
                     />
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -302,7 +314,7 @@ export function FAQSection() {
                 >
                   {group.category}
                 </h3>
-                <div>
+                <motion.div layout>
                   {group.items.map((item, i) => (
                     <FAQItem
                       key={i}
@@ -311,11 +323,28 @@ export function FAQSection() {
                       onToggle={() => toggle(group.category, i)}
                     />
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* 👇 View All Button 👇 */}
+        {!isExpanded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              onClick={() => setIsExpanded(true)}
+              className="border border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#111111] transition-colors duration-300 text-[10px] uppercase tracking-widest py-3 px-8 rounded-sm"
+            >
+              View All FAQs
+            </button>
+          </motion.div>
+        )}
 
         {/* Bottom CTA */}
         <motion.div
@@ -356,3 +385,4 @@ export function FAQSection() {
     </section>
   );
 }
+

@@ -6,7 +6,6 @@ interface MetalRates {
   gold22k: number | null;
   gold18k: number | null;
   silver: number | null;
-  platinum: number | null;
   mcxGold: number | null;
   changes?: Record<string, number>;
 }
@@ -16,14 +15,12 @@ const DEFAULT_RATES: MetalRates = {
   gold22k: 0,
   gold18k: 0,
   silver: 0,
-  platinum: 0,
   mcxGold: 0,
   changes: {
     gold24k: 0,
     gold22k: 0,
     gold18k: 0,
     silver: 0,
-    platinum: 0,
   },
 };
 
@@ -61,11 +58,6 @@ const TICKER_ITEMS = (rates: MetalRates) => [
     change: rates?.changes?.silver ?? 0,
   },
   {
-    label: "Platinum",
-    value: `₹${safeFormat(rates?.platinum)}/g`,
-    change: rates?.changes?.platinum ?? 0,
-  },
-  {
     label: "MCX Gold",
     value: `₹${safeFormat(rates?.mcxGold)}/10g`,
     change: rates?.changes?.gold24k ?? 0, 
@@ -96,14 +88,12 @@ export default function MetalTicker() {
         gold22k: data.gold22k ?? 0,
         gold18k: data.gold18k ?? 0,
         silver: data.silver ?? 0,
-        platinum: data.platinum ?? 0,
         mcxGold: data.mcxGold ?? 0,
         changes: {
           gold24k: data.changes?.gold24k ?? 0,
           gold22k: data.changes?.gold22k ?? 0,
           gold18k: data.changes?.gold18k ?? 0,
           silver: data.changes?.silver ?? 0,
-          platinum: data.changes?.platinum ?? 0,
         },
       });
     } catch (err) {

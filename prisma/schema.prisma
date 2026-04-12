@@ -190,6 +190,9 @@ enum MetalType {
 }
 
 enum Category {
+  Gold
+  Silver
+
   Anklets
   Bangles
   Belly_Chains

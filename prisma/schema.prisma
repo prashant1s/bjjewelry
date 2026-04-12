@@ -187,22 +187,26 @@ enum MetalType {
   GOLD_22K
   GOLD_18K
   SILVER
-  PLATINUM
 }
 
 enum Category {
-  GOLD
-  BRIDAL
-  TEMPLE
-  KUNDAN_POLKI
-  MENS
-  SILVER
-  NEW_ARRIVALS
-  RINGS
-  NECKLACES
-  EARRINGS
-  BANGLES
-  PENDANTS
+  Anklets
+  Bangles
+  Belly_Chains
+  Necklaces
+  Jewellery_Purses
+  Phone_Covers
+  Mens_Bracelets
+  Womens_Bracelets
+  Unisex_Bracelets
+  Mens_Chains
+  Womens_Chains
+  Unisex_Chains
+  Mens_Watches
+  Womens_Watches
+  Unisex_Watches
+  Rings
+  Earrings
 }
 
 enum OrderStatus {

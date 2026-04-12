@@ -44,7 +44,6 @@ export default function CollectionPageClient({
     { label: "22K Gold", value: "GOLD_22K" },
     { label: "18K Gold", value: "GOLD_18K" },
     { label: "Silver", value: "SILVER" },
-    { label: "Platinum", value: "PLATINUM" },
   ];
 
   // Function to update URL when filters change

@@ -1,8 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import CollectionPageClient from "@/components/collections/CollectionPageClient";
-import { MetalType } from "@prisma/client";
-import {  Category } from "@prisma/client";
+import { MetalType, Category } from "@prisma/client";
 
 // Define possible sort options
 export type SortOption = "price_asc" | "price_desc" | "newest";
@@ -15,7 +14,7 @@ export default async function Page(props: {
   const resolvedParams = await props.params;
   const resolvedSearchParams = await props.searchParams;
 
-  // 2. Format the title (Existing logic preserved)
+  // 2. Format the title (e.g. "Kundan Polki")
   const title = resolvedParams.slug
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -27,7 +26,7 @@ export default async function Page(props: {
   const metals = (resolvedSearchParams.metal as string)?.split(",") || [];
   const sortBy = (resolvedSearchParams.sort as SortOption) || "newest";
 
- // 4. Build Prisma Query based on active filters
+  // 4. Build Prisma Query based on active filters
   const whereClause: any = {
     price: {
       gte: minPrice,
@@ -36,10 +35,17 @@ export default async function Page(props: {
     inStock: true,
   };
 
-  // Only filter by category if it's NOT the "new-arrivals" page
+  // 👇 PERFECTED LOGIC: Only filter by category if it's NOT the "new-arrivals" page
   if (resolvedParams.slug !== "new-arrivals") {
-    whereClause.category = resolvedParams.slug.toUpperCase().replace(/-/g, "_") as Category;
+    // Transforms "kundan-polki" -> "Kundan_Polki"
+    const dbCategory = resolvedParams.slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join("_") as Category;
+      
+    whereClause.category = dbCategory;
   }
+  // 👆 ======================================================= 👆
 
   // Add metal filtering if any are selected
   if (metals.length > 0) {
@@ -60,6 +66,13 @@ export default async function Page(props: {
     orderBy: orderByClause,
   });
 
+  // Serialize dates for Client Component safety
+  const safeProducts = products.map((product) => ({
+    ...product,
+    createdAt: product.createdAt.toISOString(),
+    updatedAt: product.updatedAt.toISOString(),
+  }));
+
   return (
     <div className="min-h-screen bg-white">
       {/* Dynamic Header */}
@@ -79,7 +92,7 @@ export default async function Page(props: {
       {/* 6. Render the Client Brain (Sidebar & Grid) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CollectionPageClient 
-          initialProducts={products} 
+          initialProducts={safeProducts}
           categoryTitle={title}
           currentFilters={{ minPrice, maxPrice, metals, sortBy }}
         />
@@ -87,3 +100,18 @@ export default async function Page(props: {
     </div>
   );
 }
+// enum Category {
+//   GOLD
+//   BRIDAL
+//   TEMPLE
+//   KUNDAN_POLKI
+//   MENS
+//   SILVER
+//   NEW_ARRIVALS
+//   RINGS
+//   NECKLACES
+//   EARRINGS
+//   BANGLES
+//   PENDANTS
+// }
+// Define possible sort options

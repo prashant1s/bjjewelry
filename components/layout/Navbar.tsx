@@ -55,12 +55,13 @@ const NAV_LINKS = [
     href: "/trade",
     children: [
       { label: "B2B Partnership", href: "/trade/b2b" },
+      { label: "Export & Import", href: "/trade/export" },
+      { label: "Return & Refund", href: "/trade/return-refund" },
+      { label: "BJ Jewelry Club", href: "/trade/BJ-Jewelry-Club" },
       { label: "Bulk Ordering", href: "/trade/bulk" },
-      { label: "OEM Manufacturing", href: "/trade/oem" },
-      { label: "Export Programme", href: "/trade/export" },
-      { label: "Corporate Gifting", href: "/trade/corporate" },
-      { label: "Gold Investment", href: "/trade/investment" },
-      { label: "Repair & Restore", href: "/trade/repair" },
+      { label: "Careers", href: "/trade/careers" },
+      { label: "Payment", href: "/trade/Payment" },
+      { label: "Faq", href: "/#faq" },
     ],
   },
   { label: "Contact", href: "/contact" },
@@ -229,8 +230,8 @@ export function Navbar() {
               <Search className="w-5 h-5" />
             </button>
             {/* 👇 IMPLEMENTED HEART / WISHLIST BUTTON 👇 */}
-            <Link 
-              href="/wishlist" 
+            <Link
+              href="/wishlist"
               className="hidden md:flex relative text-[#4a4a4a] hover:text-[#C9A84C] transition-colors"
               aria-label="Wishlist"
             >

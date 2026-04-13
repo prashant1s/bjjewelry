@@ -20,11 +20,15 @@ export function urlFor(source: any) {
 export async function getFeaturedCollections() {
   return sanityClient.fetch(
     `*[_type == "collection" && featured == true] | order(order asc) {
-      _id, title, "slug": slug.current, description, image, itemCount
+      _id, 
+      title, 
+      "slug": slug.current, 
+      description, 
+      "image": image.secure_url,
+      itemCount
     }`
   );
 }
-
 export async function getProducts(category?: string) {
   const filter = category
     ? `*[_type == "product" && category == $category]`
@@ -58,7 +62,13 @@ export async function getProductBySlug(slug: string) {
 export async function getBlogPosts() {
   return sanityClient.fetch(
     `*[_type == "post"] | order(publishedAt desc) [0..5] {
-      _id, title, "slug": slug.current, excerpt, mainImage, publishedAt, author
+      _id, 
+      title, 
+      "slug": slug.current, 
+      excerpt, 
+      "mainImage": mainImage.secure_url,
+      publishedAt, 
+      author
     }`
   );
 }
@@ -66,8 +76,12 @@ export async function getBlogPosts() {
 export async function getHomepageContent() {
   return sanityClient.fetch(
     `*[_type == "homepage"][0] {
-      heroTitle, heroSubtitle, heroImage,
-      featuredBanner, announcementText
+      heroTitle, 
+      heroSubtitle, 
+      "heroImage": heroImage.secure_url,       
+      "featuredBanner": featuredBanner.secure_url, 
+      announcementText
     }`
   );
 }
+

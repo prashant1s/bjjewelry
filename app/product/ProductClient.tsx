@@ -176,7 +176,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState } from "react";
@@ -203,7 +202,7 @@ interface SanityProduct {
 
 export default function ProductClient({ product }: { product: SanityProduct }) {
   // Use the first image from Sanity, or a fallback if none exist
-  const [activeImage, setActiveImage] = useState(product.images?.[0] || "/placeholder.png");
+  const [activeImage, setActiveImage] = useState(product?.images?.[0] || "/placeholder.png");
 
   // WhatsApp Message Generator
   const handleWhatsAppInquiry = () => {
@@ -228,10 +227,10 @@ export default function ProductClient({ product }: { product: SanityProduct }) {
         <div className="flex flex-col md:flex-row gap-12 lg:gap-20">
           
           {/* LEFT: Image Gallery (Amazon Style) */}
-          <div className="w-full md:w-1/2 flex flex-col md:flex-row gap-4 h-max">
+          <div className="w-full md:w-1/2 flex flex-col md:flex-row gap-4 md:items-start">
             
             {/* 1. Thumbnails (Bottom on Mobile, Left on Desktop) */}
-            {product.images && product.images.length > 1 && (
+            {product?.images && product.images.length > 1 && (
               <div className="flex flex-row md:flex-col gap-3 overflow-x-auto md:overflow-x-hidden md:overflow-y-auto w-full md:w-20 flex-shrink-0 snap-x md:snap-y [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] order-2 md:order-1">
                 {product.images.map((img, idx) => (
                   <button
@@ -249,7 +248,7 @@ export default function ProductClient({ product }: { product: SanityProduct }) {
             )}
 
             {/* 2. Main Big Image (Top on Mobile, Right on Desktop) */}
-            <div className="relative aspect-square flex-1 bg-[#f8f8f8] border border-gray-100 rounded-sm overflow-hidden order-1 md:order-2">
+            <div className="relative aspect-square w-full bg-[#f8f8f8] border border-gray-100 rounded-sm overflow-hidden order-1 md:order-2">
               {activeImage && activeImage !== "/placeholder.png" ? (
                 <Image src={activeImage} alt={product.name} fill className="object-cover" priority />
               ) : (

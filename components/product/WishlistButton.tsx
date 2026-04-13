@@ -1,19 +1,18 @@
 "use client";
 
 import { Heart } from "lucide-react";
-import { useWishlist } from "@/hooks/useWishlist";
+import { useWishlist } from "@/hooks/WishlistContext";
 
 export function WishlistButton({ product }: { product: any }) {
   const { isInWishlist, toggleWishlist } = useWishlist();
   
-  // 👇 Grab the correct Sanity ID
-  const productId = product._id || product.id;
-  const isLiked = isInWishlist(productId);
+  // 👇 The Context handles the ID check automatically, so we just pass the product!
+  const isLiked = isInWishlist(product);
 
   return (
     <button
       onClick={(e) => {
-        e.preventDefault(); 
+        e.preventDefault(); // Prevents clicking the heart from opening the product page
         e.stopPropagation(); 
         toggleWishlist(product);
       }}
@@ -23,8 +22,8 @@ export function WishlistButton({ product }: { product: any }) {
       <Heart
         className={`w-[18px] h-[18px] transition-colors duration-300 ${
           isLiked 
-            ? "fill-red-500 text-red-500" 
-            : "text-gray-400 hover:text-gray-600" 
+            ? "fill-red-500 text-red-500" // Red when liked
+            : "text-gray-400 hover:text-gray-600" // Gray when unliked
         }`}
       />
     </button>

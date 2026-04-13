@@ -359,8 +359,8 @@
 //   );
 // }
 
-
 "use client";
+
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
@@ -377,8 +377,8 @@ import {
 import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 
-// 👇 1. Import your new hook
-import { useWishlist } from "@/hooks/useWishlist";
+// 👇 Use the new Context Hook (Make sure you deleted the old useWishlist import)
+import { useWishlist } from "@/hooks/WishlistContext"; 
 
 // --- Minimal Categorized Data ---
 const MINIMAL_COLLECTIONS = [
@@ -440,7 +440,7 @@ export function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   
-  // 👇 2. Initialize the hook
+  // 👇 Connect to the Global Brain
   const { wishlist, isMounted } = useWishlist();
 
   const [scrolled, setScrolled] = useState(false);
@@ -605,7 +605,7 @@ export function Navbar() {
               <Search className="w-5 h-5" />
             </button>
             
-            {/* 👇 3. UPDATED WISHLIST BUTTON 👇 */}
+            {/* WISHLIST BUTTON (Desktop) */}
             <Link
               href="/wishlist"
               className="hidden md:flex relative text-[#4a4a4a] hover:text-[#C9A84C] transition-colors"
@@ -719,7 +719,7 @@ export function Navbar() {
               </div>
             ))}
             
-            {/* Optional: Add Wishlist link to Mobile menu for better UX */}
+            {/* WISHLIST BUTTON (Mobile) */}
             <div className="border-b border-gray-50">
               <Link
                 href="/wishlist"

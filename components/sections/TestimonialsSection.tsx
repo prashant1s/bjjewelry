@@ -395,7 +395,13 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-
+type Testimonial = {
+  name: string;
+  date: string;
+  rating: number;
+  text: string;
+  avatar: string;
+};
 const TESTIMONIALS = [
   {
     name: "Roger Pierce",
@@ -428,8 +434,8 @@ const TESTIMONIALS = [
 ];
 
 export function TestimonialsSection() {
-  const renderCard = (t, i) => (
-    <div
+const renderCard = (t: Testimonial, i: number) => (
+      <div
       key={`${t.name}-${i}`}
       // Hardcoding width to prevent squeezing and ensuring text wraps normally
       style={{ width: '400px', whiteSpace: 'normal' }}

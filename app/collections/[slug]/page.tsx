@@ -104,7 +104,7 @@
 import { notFound } from "next/navigation";
 import CollectionPageClient from "@/components/collections/CollectionPageClient";
 import { sanityClient } from "@/lib/sanity";
-
+export const revalidate = 30;
 export type SortOption = "price_asc" | "price_desc" | "newest";
 
 export default async function Page(props: {
@@ -135,16 +135,10 @@ export default async function Page(props: {
   const queryParams: Record<string, any> = { minPrice, maxPrice };
 
   // Category Filtering
-  if (resolvedParams.slug !== "new-arrivals") {
-    const dbCategory = resolvedParams.slug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join("_");
-      
+ if (resolvedParams.slug !== "new-arrivals") {
     query += ` && category == $category`;
-    queryParams.category = dbCategory;
+    queryParams.category = resolvedParams.slug;
   }
-
   // Metal Filtering
   if (metals.length > 0) {
     query += ` && metal in $metals`;

@@ -14,6 +14,8 @@ interface Product {
   price: number;
   images: string[];
   metal: string;
+  moq: string;    
+  badge?: string;
   purity: string | null;
 }
 

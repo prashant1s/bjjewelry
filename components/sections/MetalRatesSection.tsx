@@ -1,6 +1,6 @@
 "use client"; // Fixed missing quote here
 import { useEffect, useState, useRef } from "react";
-
+import { usePathname } from "next/navigation";
 interface MetalRates {
   gold24k: number | null;
   gold22k: number | null;
@@ -111,6 +111,8 @@ export default function MetalTicker() {
   }, []);
   const items = TICKER_ITEMS(rates || DEFAULT_RATES); 
   const doubled = [...items, ...items];
+  const pathname = usePathname();
+if (pathname.startsWith('/studio')) return null;
   return (
     <div className="bg-[#1a1a1a] text-white overflow-hidden relative h-9">
       <div className="flex animate-ticker whitespace-nowrap h-full items-center">

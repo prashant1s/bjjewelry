@@ -88,7 +88,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Heart } from "lucide-react";
-
+// import { Product } from "@/types/product";
 interface Product {
   id: string;
   name: string;

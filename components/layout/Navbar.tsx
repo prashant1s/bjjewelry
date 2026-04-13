@@ -1,8 +1,9 @@
 "use client";
-
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 import {
   Menu,
   X,
@@ -71,6 +72,7 @@ const GOLD = "#c9a030";
 const NAV_TEXT = "#4a4a4a";
 
 export function Navbar() {
+  const pathname = usePathname();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -94,7 +96,9 @@ export function Navbar() {
   const toggleMobileExpanded = (label: string) => {
     setMobileExpanded((prev) => (prev === label ? null : label));
   };
-
+if (pathname.startsWith("/studio")) {
+    return null; 
+  }
   return (
     <header
       className={cn(

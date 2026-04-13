@@ -32,7 +32,7 @@ const MINIMAL_COLLECTIONS = [
       { label: "Women's Bracelets", href: "/collections/womens-bracelets" },
       { label: "Men's Chains", href: "/collections/mens-chains" },
       { label: "Women's Chains", href: "/collections/womens-chains" },
-      { label: "Unisex Styles", href: "/collections/unisex" },
+      { label: "Unisex Styles", href: "/collections/unisex-styles" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const MINIMAL_COLLECTIONS = [
     items: [
       { label: "Men's Watches", href: "/collections/mens-watches" },
       { label: "Women's Watches", href: "/collections/womens-watches" },
-      { label: "Luxury Purses", href: "/collections/purses" },
+      { label: "Luxury Purses", href: "/collections/luxury-purses" },
       { label: "Phone Covers", href: "/collections/phone-covers" },
     ],
   },

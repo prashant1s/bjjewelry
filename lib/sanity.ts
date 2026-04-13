@@ -1,25 +1,26 @@
-import { createClient } from "@sanity/client";
+// Use next-sanity instead of @sanity/client for better Next.js App Router performance
+import { createClient } from "next-sanity"; 
 import imageUrlBuilder from "@sanity/image-url";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SanityImageSource = any;
 
 export const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
-  apiVersion: "2024-01-01",
+  apiVersion: "2024-04-13", // Use today's date
   useCdn: process.env.NODE_ENV === "production",
 });
 
+// We keep the builder ONLY for things that still use standard Sanity images (like the Homepage banner or Blog posts)
 const builder = imageUrlBuilder(sanityClient);
 
-export function urlFor(source: SanityImageSource) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function urlFor(source: any) {
   return builder.image(source);
 }
 
 export async function getFeaturedCollections() {
   return sanityClient.fetch(
     `*[_type == "collection" && featured == true] | order(order asc) {
-      _id, title, slug, description, image, itemCount
+      _id, title, "slug": slug.current, description, image, itemCount
     }`
   );
 }
@@ -28,9 +29,12 @@ export async function getProducts(category?: string) {
   const filter = category
     ? `*[_type == "product" && category == $category]`
     : `*[_type == "product"]`;
+    
   return sanityClient.fetch(
-    `${filter} | order(createdAt desc) {
-      _id, name, slug, price, metal, category, images, description, weight, purity, featured
+    `${filter} | order(_createdAt desc) {
+      _id, name, "slug": slug.current, price, metal, category, description, weight, purity, featured,
+      moq, badge, style, inStock,
+      "images": images[].secure_url
     }`,
     { category }
   );
@@ -39,9 +43,12 @@ export async function getProducts(category?: string) {
 export async function getProductBySlug(slug: string) {
   return sanityClient.fetch(
     `*[_type == "product" && slug.current == $slug][0] {
-      _id, name, slug, price, metal, category, images, description, weight, purity, featured,
+      _id, name, "slug": slug.current, price, metal, category, description, weight, purity, featured,
+      moq, badge, style, inStock,
+      "images": images[].secure_url,
+      
       "related": *[_type == "product" && category == ^.category && slug.current != $slug][0..3] {
-        _id, name, slug, price, images
+        _id, name, "slug": slug.current, price, moq, badge, "images": images[].secure_url
       }
     }`,
     { slug }
@@ -51,7 +58,7 @@ export async function getProductBySlug(slug: string) {
 export async function getBlogPosts() {
   return sanityClient.fetch(
     `*[_type == "post"] | order(publishedAt desc) [0..5] {
-      _id, title, slug, excerpt, mainImage, publishedAt, author
+      _id, title, "slug": slug.current, excerpt, mainImage, publishedAt, author
     }`
   );
 }

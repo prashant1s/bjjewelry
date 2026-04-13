@@ -28,15 +28,15 @@ const playfair = Playfair_Display({
   variable: "--font-display",
   display: "swap",
 });
-
+//seo metadata fix remove diamonds
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://bjjewelry.in"),
   title: {
-    default: "BJ Jewelry – Fine Gold, Diamond & Silver Jewellery | Hyderabad & Chennai",
+    default: "BJ Jewelry – Fine Gold, & Silver Jewellery | Hyderabad & Chennai",
     template: "%s | BJ Jewelry",
   },
   description:
-    "BJ Jewelry – Est. 2007. Hyderabad's finest gold, diamond, silver & platinum jewellery. BIS hallmarked, custom orders, bridal collections, wholesale B2B. Now in Chennai.",
+    "BJ Jewelry – Est. 2007. Hyderabad's finest gold, silver & platinum jewellery. BIS hallmarked, custom orders, bridal collections, wholesale B2B. Now in Chennai.",
   keywords: [
     "gold jewellery Hyderabad",
     "diamond jewellery",

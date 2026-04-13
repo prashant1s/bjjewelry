@@ -7,6 +7,7 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
+ 
 }
 
 model User {
@@ -72,6 +73,9 @@ model Product {
   metal       MetalType
   category    Category
   images      String[]
+ style       String?
+ moq         String        @default("Contact Us")
+  badge       String?
   inStock     Boolean       @default(true)
   featured    Boolean       @default(false)
   sanityId    String?
@@ -195,20 +199,22 @@ enum Category {
   Corporate_Gifting
   Anklets
   Bangles
-  Belly_Chains
   Necklaces
-  Jewellery_Purses
-  Phone_Covers
+  Belly_Chains
   Mens_Bracelets
   Womens_Bracelets
   Unisex_Bracelets
   Mens_Chains
   Womens_Chains
   Unisex_Chains
+  Unisex_Styles
   Mens_Watches
   Womens_Watches
   Unisex_Watches
-  Rings
+  Luxury_Purses
+  Phone_Covers
+Rings             
+Jewellery_Purses
   Earrings
 }
 

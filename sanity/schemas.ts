@@ -1,6 +1,7 @@
 // Sanity CMS Schema Definitions for BJ Jewelry
 // Use these in your Sanity Studio project
 
+
 export const productSchema = {
   name: "product",
   title: "Products",
@@ -17,7 +18,12 @@ export const productSchema = {
       title: "Metal Type",
       type: "string",
       options: {
-        list: ["24K Gold", "22K Gold", "18K Gold", "Silver", "Platinum", "Diamond", "Kundan", "Gemstone"],
+        list: [
+          { title: "24K Gold", value: "GOLD_24K" },
+          { title: "22K Gold", value: "GOLD_22K" },
+          { title: "18K Gold", value: "GOLD_18K" },
+          { title: "Silver", value: "SILVER" }
+        ],
       },
     },
     {
@@ -25,12 +31,54 @@ export const productSchema = {
       title: "Category",
       type: "string",
       options: {
-        list: ["Bridal", "Diamond", "Temple", "Kundan & Polki", "Men's", "Silver", "New Arrivals"],
+        list: [
+          { title: "Gold", value: "Gold" },
+          { title: "Silver", value: "Silver" },
+          { title: "Corporate Gifting", value: "Corporate_Gifting" },
+          { title: "Anklets", value: "Anklets" },
+          { title: "Bangles", value: "Bangles" },
+          { title: "Belly Chains", value: "Belly_Chains" },
+          { title: "Necklaces", value: "Necklaces" },
+          { title: "Jewellery Purses", value: "Jewellery_Purses" },
+          { title: "Luxury Purses", value: "Luxury_Purses" },
+          { title: "Phone Covers", value: "Phone_Covers" },
+          { title: "Men's Bracelets", value: "Mens_Bracelets" },
+          { title: "Women's Bracelets", value: "Womens_Bracelets" },
+          { title: "Unisex Bracelets", value: "Unisex_Bracelets" },
+          { title: "Unisex Styles", value: "Unisex_Styles" },
+          { title: "Men's Chains", value: "Mens_Chains" },
+          { title: "Women's Chains", value: "Womens_Chains" },
+          { title: "Unisex Chains", value: "Unisex_Chains" },
+          { title: "Men's Watches", value: "Mens_Watches" },
+          { title: "Women's Watches", value: "Womens_Watches" },
+          { title: "Unisex Watches", value: "Unisex_Watches" },
+          { title: "Rings", value: "Rings" },
+          { title: "Earrings", value: "Earrings" }
+        ],
       },
     },
+    { 
+      name: "style", 
+      title: "Style / Sub-category", 
+      type: "string",
+      description: "e.g., 'Cuban Link', 'Charm Bracelets', 'Bridal Heavy'" 
+    },
+    { 
+      name: "moq", 
+      title: "Minimum Order Quantity (MOQ)", 
+      type: "string",
+      initialValue: "Contact Us",
+      description: "e.g., '100 pairs', '30 sets'" 
+    },
+    { 
+      name: "badge", 
+      title: "Badge (Optional)", 
+      type: "string",
+      description: "e.g., 'BESTSELLER', 'NEW', 'TRENDING'" 
+    },
     { name: "images", title: "Images", type: "array", of: [{ type: "image" }] },
-    { name: "featured", title: "Featured", type: "boolean" },
-    { name: "inStock", title: "In Stock", type: "boolean" },
+    { name: "featured", title: "Featured", type: "boolean", initialValue: false },
+    { name: "inStock", title: "In Stock", type: "boolean", initialValue: true },
   ],
 };
 

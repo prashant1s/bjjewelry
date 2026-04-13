@@ -613,7 +613,7 @@ export function Navbar() {
             >
               <Heart className="w-5 h-5" />
               {/* Only show badge if mounted and wishlist has items */}
-              {isMounted && wishlist.length > 0 && (
+              {isMounted && (
                 <span className="absolute -top-1.5 -right-1.5 bg-[#C9A84C] text-white text-[8px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">
                   {wishlist.length}
                 </span>

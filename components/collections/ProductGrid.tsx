@@ -82,13 +82,13 @@
 //     </div>
 //   );
 // }
-
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart } from "lucide-react";
-// import { Product } from "@/types/product";
+// 👇 1. Import our smart WishlistButton instead of the dumb Heart icon
+import { WishlistButton } from "@/components/product/WishlistButton"; 
+
 interface Product {
   id: string;
   name: string;
@@ -131,10 +131,9 @@ export function ProductGrid({ products }: { products: Product[] }) {
               </div>
             )}
 
-            {/* Wishlist Button */}
-            <button className="absolute top-2 right-2 md:top-4 md:right-4 z-10 p-1.5 md:p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-400 opacity-0 group-hover:opacity-100 hover:text-[#c41e3a] hover:bg-white transition-all shadow-sm">
-              <Heart className="w-3 h-3 md:w-4 md:h-4" />
-            </button>
+            {/* 👇 2. USE THE SMART WISHLIST BUTTON 👇 */}
+            {/* It handles the red/gray state and updates the Navbar automatically */}
+            <WishlistButton product={product} />
 
             {/* Product Image */}
             <Link href={`/product/${product.slug}`} className="block w-full h-full">

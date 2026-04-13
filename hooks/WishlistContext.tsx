@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-// Define what our brain knows and can do
 type WishlistContextType = {
   wishlist: any[];
   toggleWishlist: (product: any) => void;
@@ -12,53 +11,62 @@ type WishlistContextType = {
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined);
 
+// 👇 Aggressive ID Finder: If _id is missing, it tries id, then slug, then name!
+const getSafeId = (item: any) => {
+  if (!item) return null;
+  return item._id || item.id || item.slug?.current || item.slug || item.name;
+};
+
 export function WishlistProvider({ children }: { children: ReactNode }) {
   const [wishlist, setWishlist] = useState<any[]>([]);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Load data when the app starts
   useEffect(() => {
     setIsMounted(true);
     try {
       const stored = localStorage.getItem("bj_wishlist");
       if (stored) {
-        const parsed = JSON.parse(stored).filter((item: any) => item && (item._id || item.id));
+        // Only keep items that actually have a safe ID
+        const parsed = JSON.parse(stored).filter((item: any) => getSafeId(item));
         setWishlist(parsed);
       }
     } catch (error) {
       console.error("Failed to load wishlist", error);
-      setWishlist([]);
     }
   }, []);
 
-  // The function to add/remove items globally
   const toggleWishlist = (product: any) => {
     if (!product) return;
-    const productId = product._id || product.id;
+    
+    const productId = getSafeId(product);
+    
+    if (!productId) {
+      console.error("🚨 WISHLIST ERROR: This product has no ID, Slug, or Name!", product);
+      alert("Error: Product data is missing identifiers.");
+      return;
+    }
 
     setWishlist((currentList) => {
-      const exists = currentList.find((item) => (item._id || item.id) === productId);
+      const exists = currentList.find((item) => getSafeId(item) === productId);
       let newList;
       
       if (exists) {
-        // Remove it
-        newList = currentList.filter((item) => (item._id || item.id) !== productId);
+        newList = currentList.filter((item) => getSafeId(item) !== productId);
+        console.log("🗑️ Removed from Wishlist:", productId);
       } else {
-        // Add it
         newList = [...currentList, product];
+        console.log("✅ Added to Wishlist:", productId);
       }
 
-      // Save to memory
       localStorage.setItem("bj_wishlist", JSON.stringify(newList));
-      return newList; // This instantly triggers the Navbar to update!
+      return newList; 
     });
   };
 
-  // Check if an item is liked
-  const isInWishlist = (productOrId: any) => {
-    if (!productOrId) return false;
-    const idToCheck = typeof productOrId === 'string' ? productOrId : (productOrId._id || productOrId.id);
-    return wishlist.some((item) => (item._id || item.id) === idToCheck);
+  const isInWishlist = (product: any) => {
+    if (!product) return false;
+    const idToCheck = typeof product === 'string' ? product : getSafeId(product);
+    return wishlist.some((item) => getSafeId(item) === idToCheck);
   };
 
   return (
@@ -68,7 +76,6 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Helper hook to use the brain anywhere
 export function useWishlist() {
   const context = useContext(WishlistContext);
   if (!context) {

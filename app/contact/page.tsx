@@ -98,8 +98,8 @@ export default function ContactPage() {
             <div className="space-y-6 mb-10">
               {[
                 { icon: Phone, label: "Phone", value: "+91 9444963811", href: "tel:+919444963811" },
-                { icon: Mail, label: "Email", value: "hello@bjjewelry.in", href: "mailto:hello@bjjewelry.in" },
-                { icon: MapPin, label: "Hyderabad Showroom", value: "Banjara Hills, Hyderabad – 500034", href: "#" },
+                { icon: Mail, label: "Email", value: "Info@bjjewelry.in", href: "mailto:Info@bjjewelry.in" },
+                { icon: MapPin, label: "Telangana Showroom", value: "Station Road, Pot Market, Monda Market, Shivaji Nagar, Secunderabad, Telangana  – 500003", href: "#" },
                 { icon: MapPin, label: "Chennai Showroom", value: "Anna Nagar, Chennai – 600040", href: "#" },
                 { icon: Clock, label: "Store Hours", value: "Mon–Sat: 10 AM – 8 PM | Sun: 11 AM – 6 PM", href: "" },
               ].map((item) => (

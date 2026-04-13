@@ -112,7 +112,7 @@
 
 "use client";
 
-import { WishlistButton } from "./WishlistButton"; // Correctly imported
+import { WishlistButton } from "@/components/WishlistButton"; // Correctly imported
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -206,7 +206,9 @@ export function ProductCard({ product }: ProductCardProps) {
                 {product.purity} {product.weight && `· ${product.weight}g`}
               </p>
             )}
-            <p className="text-[#C9A84C] font-medium">{formatPrice(product.price)}</p>
+            <p className="text-[#C9A84C] font-medium">
+              {formatPrice(product.price)}
+            </p>
           </div>
         </div>
       </div>

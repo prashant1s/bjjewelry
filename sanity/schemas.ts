@@ -95,6 +95,11 @@ export const collectionSchema = {
     { name: "order", title: "Display Order", type: "number" },
     { name: "itemCount", title: "Item Count Display", type: "string" },
   ],
+  preview: {
+    select: {
+      title: 'title',
+    }
+  }
 };
 
 export const postSchema = {

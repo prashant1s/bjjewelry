@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import  MetalRatesSection  from "@/components/sections/MetalRatesSection";
 // 1. IMPORTANT: We import YOUR custom wrapper, not next-auth directly
 import { Providers } from "@/components/Providers";
-
+import { WishlistProvider } from "@/hooks/WishlistContext";
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],

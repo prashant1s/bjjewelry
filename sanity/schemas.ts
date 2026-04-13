@@ -76,7 +76,7 @@ export const productSchema = {
       type: "string",
       description: "e.g., 'BESTSELLER', 'NEW', 'TRENDING'" 
     },
-    { name: "images", title: "Images", type: "array", of: [{ type: "image" }] },
+    { name: "images", title: "Images", type: "array", of: [{ type: "cloudinary.asset" }] },
     { name: "featured", title: "Featured", type: "boolean", initialValue: false },
     { name: "inStock", title: "In Stock", type: "boolean", initialValue: true },
   ],

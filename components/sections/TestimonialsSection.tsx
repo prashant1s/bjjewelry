@@ -404,21 +404,21 @@ type Testimonial = {
 };
 const TESTIMONIALS = [
   {
-    name: "Roger Pierce",
+    name: "Aarav",
     date: "2025-07-22",
     rating: 5,
     text: "I'm so glad to be a client of Mango Digital! As a small business owner, having a trusted team to handle my digital marketing and website needs is incredible.",
     avatar: "https://i.pravatar.cc/150?img=11",
   },
   {
-    name: "Raymond Gerard",
+    name: "Rahul",
     date: "2023-04-01",
     rating: 5,
     text: "Awesome management, food, music night, and locals. Very walkable and close to many restaurants and bars. Highly recommended!",
     avatar: "https://i.pravatar.cc/150?img=33",
   },
   {
-    name: "Halle",
+    name: "Arjun",
     date: "2025-11-16",
     rating: 5,
     text: "Very walkable and close to many restaurants and bars. The market across the street was our go to! The home itself felt very clean and was well maintained.",

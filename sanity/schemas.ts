@@ -80,6 +80,20 @@ export const productSchema = {
     { name: "featured", title: "Featured", type: "boolean", initialValue: false },
     { name: "inStock", title: "In Stock", type: "boolean", initialValue: true },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'price',
+      media: 'images.0' // Shows the first Cloudinary image in the list
+    },
+    prepare({ title, subtitle, media }: { title: string; subtitle: number; media: any }) {
+      return {
+        title,
+        subtitle: subtitle ? `₹${subtitle}` : 'No price set',
+        media
+      }
+    }
+  }
 };
 
 export const collectionSchema = {
@@ -98,6 +112,7 @@ export const collectionSchema = {
   preview: {
     select: {
       title: 'title',
+      media: 'image'
     }
   }
 };
@@ -117,7 +132,7 @@ export const postSchema = {
       name: "body",
       title: "Body",
       type: "array",
-      of: [{ type: "block" }, { type: "image" }],
+      of: [{ type: "block" }, { type: "cloudinary.asset" }],
     },
   ],
 };
@@ -129,7 +144,7 @@ export const homepageSchema = {
   fields: [
     { name: "heroTitle", title: "Hero Title", type: "string" },
     { name: "heroSubtitle", title: "Hero Subtitle", type: "text" },
-    { name: "heroImage", title: "Hero Image", type: "image" },
+    { name: "heroImage", title: "Hero Image", type: "cloudinary.asset" },
     { name: "announcementText", title: "Announcement Banner", type: "string" },
     { name: "featuredBanner", title: "Featured Banner Image", type: "image" },
   ],

@@ -31,7 +31,12 @@ export function ProductGrid({ products }: { products: Product[] }) {
       </div>
     );
   }
-
+ const handleWhatsAppInquiry = (product: Product) => {
+    const phoneNumber = "919444963811"; 
+    const message = `Hello BJ Jewelry! I am interested in inquiring about:\n\n*${product.name}*\nMOQ: ${product.moq || 'N/A'}\n\nCould you please share more details and current pricing?`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 items-start">
       {products.map((product) => (
@@ -93,11 +98,9 @@ export function ProductGrid({ products }: { products: Product[] }) {
             </div>
 
             {/* Send Inquiry Button */}
-            <button
+           <button
               className="w-full mt-auto bg-[#c41e3a] hover:bg-[#a01830] text-white text-[9px] md:text-[10px] font-bold tracking-[0.15em] uppercase py-2.5 md:py-3.5 transition-colors duration-300 rounded-sm"
-              onClick={() => {
-                alert(`Opening inquiry form for ${product.name}`);
-              }}
+              onClick={() => handleWhatsAppInquiry(product)}
             >
               Send Inquiry
             </button>

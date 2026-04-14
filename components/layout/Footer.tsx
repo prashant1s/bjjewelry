@@ -39,10 +39,23 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
     setSubmitted(true);
+    try{
+      const url = process.env.NEXT_PUBLIC_GOOGLE_NEWS_SHEET!;
+      await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email}),
+    });
+    }catch{
+      console.log("error")
+    }
     setEmail("");
   };
 

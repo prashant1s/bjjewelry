@@ -27,25 +27,27 @@ export default function ContactPage() {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/support", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setTicketId(data.ticketId?.slice(-6).toUpperCase() ?? "");
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+  e.preventDefault();
+  setStatus("loading");
+
+  try {
+    const url = process.env.NEXT_PUBLIC_GOOGLE_SHEET!;
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    // ✅ Direct success (no response available)
+    setStatus("success");
+
+  } catch {
+    setStatus("error");
   }
+}
 
   if (status === "success") {
     return (

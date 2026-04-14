@@ -8,7 +8,7 @@ import { sanityClient } from "@/lib/sanity";
 
 export const metadata: Metadata = {
   title: "Collections – Fine Jewellery",
-  description: "Explore BJ Jewelry's curated collections — bridal, diamond, temple, kundan, silver and more.",
+  description: "Explore BJ Jewelry's curated collections — Anklets,Bangles,Necklaces,Belly Chains,Chains & Bracelets,Unisex Styles,Accessories & Timepieces",
 };
 
 // 1. Your existing hardcoded collections

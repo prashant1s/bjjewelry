@@ -4,9 +4,9 @@ import { CTASection } from "./AboutCTA";
 import { FloatingGoldLine } from "@/components/sections/Float";
 
 export const metadata: Metadata = {
-  title: "About BJ Jewelry – 18 Years of Craftsmanship",
+  title: "BJ Jewelry – Trusted Wholesale BIS Hallmarked Gold & Sterling Silver Jewelry",
   description:
-    "Learn about BJ Jewelry's 18-year legacy of fine gold, diamond, and silver jewellery in Hyderabad and Chennai.",
+    "Partner with South India's emerging leader in certified jewelry. We specialize in high-purity gold and 92.5 silver collections for wholesalers and business partners. Quality and reliability assured since 2007.",
 };
 
 export default function AboutPage() {

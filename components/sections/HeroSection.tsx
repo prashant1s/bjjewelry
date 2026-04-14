@@ -18,15 +18,13 @@ export function HeroSection() {
           className="w-full h-full object-cover"
         />
         {/* Dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-black/55" />
-        {/* Subtle gold vignette at edges */}
+        <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.5)_100%)]" />
       </div>
 
       {/* Gold accent lines */}
       <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/30 to-transparent z-10" />
-      <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/30 to-transparent z-10" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left – Text */}
@@ -51,7 +49,9 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white mb-6"
-              style={{ fontFamily: "var(--font-serif)" }}
+              style={{ fontFamily: "var(--font-serif)",
+                textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
+               }}
             >
               Where Every
               <br />
@@ -74,12 +74,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-white/70 text-base leading-relaxed max-w-md mb-10"
+              className="text-white/90 text-base leading-relaxed max-w-md mb-10"
             >
-              From radiant gold to shimmering diamonds, lustrous silver to
-              precious gemstones — BJ Jewelry has been Hyderabad&apos;s
-              destination for every kind of beauty since 2007, now expanding to
-              Chennai.
+              A legacy of trust since 2007. We are a dedicated B2B partner connecting retailers to a strategic network of 150+ manufacturers. From Hyderabad to Chennai, we provide BIS Hallmark Certified 916 gold and 92.5 silver jewelry to a global market.
             </motion.p>
 
             {/* CTAs */}
@@ -131,3 +128,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+

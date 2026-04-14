@@ -66,7 +66,7 @@ export default function AccountPage() {
         </div>
 
         {/* Orders Link */}
-        <Link href="/account/orders" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
+        <Link href="/orders" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
           <div className="flex items-center gap-3 mb-4 text-gray-400 group-hover:text-[#C9A84C] transition-colors">
             <Package className="w-6 h-6" />
             <h2 className="text-lg font-medium text-gray-900">My Orders</h2>
@@ -75,7 +75,7 @@ export default function AccountPage() {
         </Link>
 
         {/* Appointments Link */}
-        <Link href="/account/appointments" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
+        <Link href="/appointments" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
           <div className="flex items-center gap-3 mb-4 text-gray-400 group-hover:text-[#C9A84C] transition-colors">
             <Calendar className="w-6 h-6" />
             <h2 className="text-lg font-medium text-gray-900">Appointments</h2>
@@ -84,7 +84,7 @@ export default function AccountPage() {
         </Link>
 
         {/* Wishlist Link */}
-        <Link href="/account/wishlist" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
+        <Link href="/wishlist" className="bg-white p-6 border border-gray-100 shadow-sm rounded-lg flex flex-col hover:border-[#C9A84C] transition-colors group">
           <div className="flex items-center gap-3 mb-4 text-gray-400 group-hover:text-[#C9A84C] transition-colors">
             <Heart className="w-6 h-6" />
             <h2 className="text-lg font-medium text-gray-900">Wishlist</h2>

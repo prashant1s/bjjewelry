@@ -52,10 +52,10 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
       
       if (exists) {
         newList = currentList.filter((item) => getSafeId(item) !== productId);
-        console.log("🗑️ Removed from Wishlist:", productId);
+        // console.log("🗑️ Removed from Wishlist:", productId);
       } else {
         newList = [...currentList, product];
-        console.log("✅ Added to Wishlist:", productId);
+        // console.log("✅ Added to Wishlist:", productId);
       }
 
       localStorage.setItem("bj_wishlist", JSON.stringify(newList));
@@ -83,3 +83,4 @@ export function useWishlist() {
   }
   return context;
 }
+

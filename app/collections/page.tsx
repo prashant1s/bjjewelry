@@ -69,6 +69,7 @@ const COLLECTIONS = [
 ];
 
 export default function CollectionsPage() {
+  console.log(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
   return (
     <div className="min-h-screen bg-white">
 

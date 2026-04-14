@@ -1,6 +1,7 @@
 // Use next-sanity instead of @sanity/client for better Next.js App Router performance
 import { createClient } from "next-sanity"; 
-import imageUrlBuilder from "@sanity/image-url";
+// import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 export const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -10,8 +11,7 @@ export const sanityClient = createClient({
 });
 
 // We keep the builder ONLY for things that still use standard Sanity images (like the Homepage banner or Blog posts)
-const builder = imageUrlBuilder(sanityClient);
-
+const builder = createImageUrlBuilder(sanityClient);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function urlFor(source: any) {
   return builder.image(source);

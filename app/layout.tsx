@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import  MetalRatesSection  from "@/components/sections/MetalRatesSection";
 // 1. IMPORTANT: We import YOUR custom wrapper, not next-auth directly
 import { Providers } from "@/components/Providers";
-
+import { WishlistProvider } from "@/hooks/WishlistContext";
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -80,16 +80,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${playfair.variable}`}>
       <body className="bg-white text-charcoal antialiased">
-        
-        {/* 2. Wrap the app with the custom Providers component */}
+         <WishlistProvider>
         <Providers>
           <MetalRatesSection/>
           {/* <MetalTicker /> */}
           <Navbar />
+         
           <main>{children}</main>
           <Footer />
         </Providers>
-
+</WishlistProvider>
         {/* WhatsApp floating button */}
         <a
           href="https://wa.me/919444963811?text=Hello%20BJ%20Jewelry"

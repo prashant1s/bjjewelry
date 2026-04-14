@@ -2,87 +2,70 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image"; 
 
 const COLLECTIONS = [
   {
     title: "Anklets",
-    subtitle: "Delicate foot adornments",
+     subtitle: "Delicate foot adornments",
     href: "/collections/anklets",
-    emoji: "🦶",
-    color: "#C9A84C",
-    bg: "from-[#fdf6e3] to-[#f5e4b8]",
+    image: "/images/collections/anklets.jpg", 
     ring: "#C9A84C",
   },
   {
     title: "Bangles",
-    subtitle: "Stacked & statement",
+     subtitle: "Stacked & statement",
     href: "/collections/bangles",
-    emoji: "⭕",
-    color: "#b8860b",
-    bg: "from-[#fef9ec] to-[#fde8a0]",
+    image: "/images/collections/bangles.jpeg", 
     ring: "#d4a017",
   },
   {
     title: "Belly Chain",
-    subtitle: "Bohemian waist wear",
+     subtitle: "Bohemian waist wear",
     href: "/collections/belly-chain",
-    emoji: "✨",
-    color: "#c0874f",
-    bg: "from-[#fdf0e8] to-[#f5d4b0]",
+    image: "/images/collections/bellychain.webp",
     ring: "#c0874f",
   },
   {
     title: "Bracelets",
-    subtitle: "Everyday elegance",
+     subtitle: "Everyday elegance",
     href: "/collections/bracelets",
-    emoji: "💎",
-    color: "#4a90b8",
-    bg: "from-[#e8f4fd] to-[#cce4f5]",
+    image: "/images/collections/bracelets.jpg",
     ring: "#4a90b8",
   },
   {
     title: "Chain — Female",
-    subtitle: "Feminine gold chains",
+     subtitle: "Feminine gold chains",
     href: "/collections/chain-female",
-    emoji: "📿",
-    color: "#C9A84C",
-    bg: "from-[#fffbf0] to-[#faefc8]",
+    image: "/images/collections/chainfemale.jpg",
     ring: "#C9A84C",
   },
   {
     title: "Chain — Male",
-    subtitle: "Bold masculine chains",
+     subtitle: "Bold masculine chains",
     href: "/collections/chain-male",
-    emoji: "⛓️",
-    color: "#5a5a5a",
-    bg: "from-[#f2f2f2] to-[#e0e0e0]",
+    image: "/images/collections/chainmales.jpg",
     ring: "#888",
   },
   {
     title: "Necklace",
-    subtitle: "Statement centrepieces",
+     subtitle: "Statement centrepieces",
     href: "/collections/necklace",
-    emoji: "👑",
-    color: "#9b4a9b",
-    bg: "from-[#f8eeff] to-[#e8d0f5]",
+    image: "/images/collections/necklace.jpg",
     ring: "#9b4a9b",
   },
   {
     title: "Purse",
-    subtitle: "Artisan clutches",
+     subtitle: "Artisan clutches",
     href: "/collections/purse",
-    emoji: "👜",
-    color: "#8b5e3c",
-    bg: "from-[#fdf0e6] to-[#f0d5b8]",
+    image: "/images/collections/pursefemale.jpg",
     ring: "#8b5e3c",
   },
   {
     title: "Watch",
-    subtitle: "Timeless luxury",
+     subtitle: "Timeless luxury",
     href: "/collections/watch",
-    emoji: "⌚",
-    color: "#2c6e8a",
-    bg: "from-[#e8f5f8] to-[#c8e8f0]",
+    image: "/images/collections/watch.webp",
     ring: "#2c6e8a",
   },
 ];
@@ -129,7 +112,7 @@ export function CollectionsSection() {
             transition={{ delay: 0.2 }}
             className="text-[#6a6a6a] mt-4 max-w-lg mx-auto text-sm leading-relaxed"
           >
-            Every piece crafted with 18 years of mastery — find your perfect jewel
+            Every piece crafted with 19 years of mastery — find your perfect jewel
           </motion.p>
           <div className="section-divider mx-auto mt-6" />
         </div>
@@ -143,55 +126,48 @@ export function CollectionsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
-              className="flex flex-col items-center gap-3 group"
+              className="flex flex-col items-center gap-3 group w-full"
             >
-              <Link href={col.href} className="flex flex-col items-center gap-3">
-                {/* Circle */}
+              <Link href={col.href} className="flex flex-col items-center gap-3 w-full">
+                
+                {/* Image Circle Container */}
                 <div
-                  className={`
-                    relative w-20 h-20 sm:w-24 sm:h-24 rounded-full
-                    bg-gradient-to-br ${col.bg}
-                    flex items-center justify-center
-                    transition-all duration-300
-                    group-hover:scale-110 group-hover:shadow-xl
-                  `}
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden flex items-center justify-center transition-all duration-500 group-hover:scale-110 bg-gray-100"
                   style={{
-                    border: `2px solid ${col.ring}30`,
-                    boxShadow: `0 0 0 0px ${col.ring}40`,
+                    border: `1px solid ${col.ring}40`,
+                    boxShadow: `0 0 0 0px ${col.ring}20`,
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow =
-                      `0 8px 30px ${col.ring}35, 0 0 0 4px ${col.ring}20`;
-                    (e.currentTarget as HTMLDivElement).style.border =
-                      `2px solid ${col.ring}80`;
+                    e.currentTarget.style.boxShadow = `0 10px 25px ${col.ring}30, 0 0 0 6px ${col.ring}15`;
+                    e.currentTarget.style.borderColor = `${col.ring}90`;
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow =
-                      `0 0 0 0px ${col.ring}40`;
-                    (e.currentTarget as HTMLDivElement).style.border =
-                      `2px solid ${col.ring}30`;
+                    e.currentTarget.style.boxShadow = `0 0 0 0px ${col.ring}20`;
+                    e.currentTarget.style.borderColor = `${col.ring}40`;
                   }}
                 >
-                  {/* Inner ring */}
-                  <div
-                    className="absolute inset-2 rounded-full opacity-30 transition-opacity duration-300 group-hover:opacity-60"
-                    style={{ border: `1px solid ${col.ring}` }}
+                  {/* Actual Product Image */}
+                  <Image
+                    src={col.image}
+                    alt={col.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100px, 150px"
                   />
-                  {/* Emoji / Icon */}
-                  <span className="text-3xl sm:text-4xl relative z-10 transition-transform duration-300 group-hover:scale-110">
-                    {col.emoji}
-                  </span>
+                  
+                  {/* Subtle Dark Overlay on Hover for premium feel */}
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-10 transition-opacity" />
                 </div>
 
                 {/* Label */}
-                <div className="text-center">
+                <div className="text-center w-full px-1">
                   <p
                     className="text-[12px] sm:text-[13px] font-medium text-[#2a2a2a] tracking-wide leading-tight transition-colors duration-200 group-hover:text-[#C9A84C]"
                     style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {col.title}
                   </p>
-                  <p className="text-[9px] tracking-[0.12em] uppercase text-[#9a9a9a] mt-0.5">
+                  <p className="text-[9px] tracking-[0.12em] uppercase text-[#9a9a9a] mt-1 line-clamp-2">
                     {col.subtitle}
                   </p>
                 </div>

@@ -92,7 +92,7 @@ async function getSanityCollections() {
     title,
     "subtitle": description,
     "slug": slug.current,
-    "image": coverImage.asset->url,
+       "image": coalesce(coverImage.asset->url, image.asset->url, mainImage.asset->url),
     badge,
     items
   }`;

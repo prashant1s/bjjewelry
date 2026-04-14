@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CTASection } from "./ABoutCTA";
+import { CTASection } from "./AboutCTA";
 import { FloatingGoldLine } from "@/components/sections/Float";
 
 export const metadata: Metadata = {

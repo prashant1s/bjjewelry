@@ -100,7 +100,6 @@ export default function ContactPage() {
                 { icon: Phone, label: "Phone", value: "+91 9444963811", href: "tel:+919444963811" },
                 { icon: Mail, label: "Email", value: "Info@bjjewelry.in", href: "mailto:Info@bjjewelry.in" },
                 { icon: MapPin, label: "Telangana Showroom", value: "Station Road, Pot Market, Monda Market, Shivaji Nagar, Secunderabad, Telangana  – 500003", href: "#" },
-                { icon: MapPin, label: "Chennai Showroom", value: "Anna Nagar, Chennai – 600040", href: "#" },
                 { icon: Clock, label: "Store Hours", value: "Mon–Sat: 10 AM – 8 PM | Sun: 11 AM – 6 PM", href: "" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4">

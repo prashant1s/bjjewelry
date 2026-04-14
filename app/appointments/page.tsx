@@ -25,22 +25,27 @@ export default function AppointmentsPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+ async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/api/support", {
+      // 👇 1. Point to the new dedicated route
+      const res = await fetch("/api/appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        // 👇 2. Send the clean, structured data
         body: JSON.stringify({
           name: form.name,
           email: form.email,
           phone: form.phone,
-          subject: `Appointment Request – ${type === "IN_STORE" ? "In-Store" : "Video Consultation"}`,
-          message: `Date: ${form.date}\nTime: ${form.timeSlot}\nLocation: ${form.location}\nType: ${type}\n\nMessage: ${form.message}`,
-          category: "GENERAL",
+          date: form.date,
+          timeSlot: form.timeSlot,
+          type: type, // "IN_STORE" or "VIDEO_CONSULTATION"
+          location: form.location,
+          message: form.message,
         }),
       });
+      
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");

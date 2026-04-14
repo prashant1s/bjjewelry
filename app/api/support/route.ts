@@ -8,11 +8,10 @@ const SupportSchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   subject: z.string().min(3).max(200),
-  message: z.string().min(10).max(2000),
+  message: z.string().min(5).max(2000),
   category: z.enum(["ORDER", "PRODUCT", "REPAIR", "CERTIFICATION", "GENERAL"]),
 });
 
-// Simple in-memory rate limit (per IP per 10 min)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 function checkRateLimit(ip: string): boolean {
@@ -57,30 +56,37 @@ export async function POST(req: NextRequest) {
 
     // Notify team
     resend.emails.send({
-      from: "BJ Jewelry Support <support@bjjewelry.in>",
-      to: "support@bjjewelry.in",
+      from: "BJ Jewelry Support <Info@bjjewelry.in>",
+      to: "Info@bjjewelry.in",
+      // 👇 FIXED: Changed from reply_to to replyTo
+      replyTo: data.email, 
       subject: `[Support #${ticket.id.slice(-6).toUpperCase()}] ${data.subject}`,
       html: `
-        <p><strong>From:</strong> ${data.name} (${data.email})</p>
-        <p><strong>Phone:</strong> ${data.phone ?? "—"}</p>
-        <p><strong>Category:</strong> ${data.category}</p>
-        <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, "<br/>")}</p>
+        <div style="font-family: sans-serif; line-height: 1.5;">
+          <p><strong>From:</strong> ${data.name} (${data.email})</p>
+          <p><strong>Phone:</strong> ${data.phone ?? "—"}</p>
+          <p><strong>Category:</strong> ${data.category}</p>
+          <p><strong>Message:</strong></p>
+          <div style="background: #f9f9f9; padding: 15px; border-left: 4px solid #C9A84C;">
+            ${data.message.replace(/\n/g, "<br/>")}
+          </div>
+        </div>
       `,
     }).catch(console.error);
 
     // Auto-reply to customer
     resend.emails.send({
-      from: "BJ Jewelry <support@bjjewelry.in>",
+      from: "BJ Jewelry <Info@bjjewelry.in>",
       to: data.email,
       subject: `We received your message – BJ Jewelry`,
       html: `
         <div style="font-family:Georgia,serif;max-width:600px;margin:auto;background:#fff;border:1px solid #C9A84C;padding:40px;">
-          <h1 style="color:#C9A84C;">BJ Jewelry</h1>
+          <h1 style="color:#C9A84C;font-size:28px;">BJ Jewelry</h1>
           <p>Dear ${data.name},</p>
-          <p>We have received your message and will get back to you within 24 hours.</p>
+          <p>We have received your message and our team will get back to you within 24 hours.</p>
           <p>Your ticket reference: <strong>#${ticket.id.slice(-6).toUpperCase()}</strong></p>
-          <p>For urgent matters, WhatsApp us at <strong>+91 9444963811</strong>.</p>
+          <hr style="border:none;border-top:1px solid #eee;margin:20px 0;" />
+          <p style="font-size:13px;color:#666;">For urgent matters, WhatsApp us at <strong>+91 9444963811</strong>.</p>
         </div>
       `,
     }).catch(console.error);

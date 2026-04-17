@@ -17,18 +17,19 @@ export function HeroSection() {
           playsInline
           className="w-full h-full object-cover"
         />
-        {/* Dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.5)_100%)]" />
+        {/* FIX: Darker base overlay and much stronger gradient on the left side */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-transparent z-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.6)_100%)]" />
       </div>
 
       {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/30 to-transparent z-10" />
+      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A84C]/40 to-transparent z-10" />
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left – Text */}
-          <div>
+          <div className="pr-4 md:pr-8">
             {/* Eyebrow */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -36,11 +37,11 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-8"
             >
-              <span className="h-px w-12 bg-[#C9A84C]" />
-              <span className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] font-medium">
+              <span className="h-px w-12 bg-[#C9A84C] shadow-[0_0_5px_rgba(201,168,76,0.5)]" />
+              <span className="text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] font-semibold drop-shadow-md">
                 Est. 2007 · Hyderabad · Now in Chennai
               </span>
-              <span className="h-px w-12 bg-[#C9A84C]" />
+              <span className="h-px w-12 bg-[#C9A84C] shadow-[0_0_5px_rgba(201,168,76,0.5)]" />
             </motion.div>
 
             {/* Headline */}
@@ -49,8 +50,10 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-white mb-6"
-              style={{ fontFamily: "var(--font-serif)",
-                textShadow: "0px 4px 20px rgba(0,0,0,0.4)"
+              style={{ 
+                fontFamily: "var(--font-serif)",
+                // FIX: Much stronger double text-shadow for separation from the bright red/gold
+                textShadow: "0px 4px 20px rgba(0,0,0,0.8), 0px 2px 4px rgba(0,0,0,0.6)"
                }}
             >
               Where Every
@@ -61,6 +64,7 @@ export function HeroSection() {
                   fontFamily: "var(--font-display)",
                   fontStyle: "italic",
                   color: "#C9A84C",
+                  textShadow: "0px 4px 20px rgba(0,0,0,0.8), 0px 2px 4px rgba(0,0,0,0.6)"
                 }}
               >
                 Jewel
@@ -74,7 +78,11 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-white/90 text-base leading-relaxed max-w-md mb-10"
+              // FIX: Changed from text-white/90 to text-white, added font-medium, and strict text-shadow inline
+              className="text-white text-base md:text-lg leading-relaxed max-w-md mb-10 font-medium tracking-wide"
+              style={{
+                textShadow: "0px 2px 10px rgba(0,0,0,0.9), 0px 1px 3px rgba(0,0,0,0.8)"
+              }}
             >
               A legacy of trust since 2007. We are a dedicated B2B partner connecting retailers to a strategic network of 150+ manufacturers. From Hyderabad to Chennai, we provide BIS Hallmark Certified 916 gold and 92.5 silver jewelry to a global market.
             </motion.p>
@@ -84,7 +92,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 drop-shadow-xl"
             >
               <Link
                 href="/collections"
@@ -94,7 +102,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/trade/b2b"
-                className="flex items-center gap-2 border border-white/40 text-white hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors text-[11px] tracking-[0.15em] uppercase px-6 py-3"
+                className="flex items-center gap-2 border border-white/60 bg-black/20 backdrop-blur-sm text-white hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors text-[11px] tracking-[0.15em] uppercase px-6 py-3"
               >
                 <FileText className="w-4 h-4" /> B2B Catalogue
               </Link>
@@ -105,7 +113,7 @@ export function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap gap-6 mt-10"
+              className="flex flex-wrap gap-6 mt-10 drop-shadow-md"
             >
               {[
                 { label: "BIS Hallmarked", icon: "✦" },
@@ -115,7 +123,7 @@ export function HeroSection() {
               ].map((badge) => (
                 <div key={badge.label} className="flex items-center gap-2">
                   <span className="text-[#C9A84C] text-xs">{badge.icon}</span>
-                  <span className="text-[10px] tracking-[0.15em] uppercase text-white/60">
+                  <span className="text-[10px] tracking-[0.15em] uppercase text-white/80 font-medium">
                     {badge.label}
                   </span>
                 </div>
@@ -128,5 +136,3 @@ export function HeroSection() {
     </section>
   );
 }
-
-

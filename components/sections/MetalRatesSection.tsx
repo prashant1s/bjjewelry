@@ -65,7 +65,7 @@ const TICKER_ITEMS = (rates: MetalRates) => [
     change: rates?.changes?.silver ?? 0,
   },
   {
-    label: "Free Shipping on Orders Above ₹25,000",
+    label: "Free Shipping on Orders Above 500gram",
     value: "",
     change: null,
   },

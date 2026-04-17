@@ -88,7 +88,7 @@ export function Footer() {
                 "https://www.facebook.com/bjjewelryb2b",
                 "https://www.linkedin.com/company/bjjewelry/",
                 "https://pinterest.com/bjjewelryb2b",
-                "https://youtube.com/",
+                "https://www.youtube.com/@bjjewelryb2b",
                
               ].map((url) => (
                 <SocialIcon
@@ -216,7 +216,6 @@ export function Footer() {
               { src: "/images/payments/paypal.svg", alt: "PayPal" },
               { src: "/images/payments/upi.svg", alt: "UPI" },
               { src: "/images/payments/visa.svg", alt: "Visa" },
-              // { src: "/images/payments/Razorpay.webp", alt: "razorpay" },
             ].map((logo) => (
               <Image
                 key={logo.alt}

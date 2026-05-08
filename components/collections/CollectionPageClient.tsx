@@ -20,8 +20,7 @@ interface Product {
 }
 
 interface Filters {
-  minPrice: number;
-  maxPrice: number;
+  subcategories: string[];
   metals: string[];
   sortBy: SortOption;
 }
@@ -44,8 +43,7 @@ export default function CollectionPageClient({
   const metalOptions = [
     { label: "24K Gold", value: "GOLD_24K" },
     { label: "22K Gold", value: "GOLD_22K" },
-    { label: "18K Gold", value: "GOLD_18K" },
-    { label: "Silver", value: "SILVER" },
+    { label: "Silver(92.5)", value: "SILVER" },
   ];
 
   // Function to update URL when filters change
@@ -54,11 +52,23 @@ export default function CollectionPageClient({
       startTransition(() => {
         // Create a new URLSearchParams object based on current URL
         const params = new URLSearchParams(searchParams.toString());
-        const mergedFilters = { ...currentFilters, ...newFilters };
+        const mergedFilters: Filters = {
+  subcategories:
+    newFilters.subcategories ?? currentFilters.subcategories ?? [],
+
+  metals:
+    newFilters.metals ?? currentFilters.metals ?? [],
+
+  sortBy:
+    newFilters.sortBy ?? currentFilters.sortBy ?? "newest",
+};
 
         // Set Price Params
-        params.set("minPrice", mergedFilters.minPrice.toString());
-        params.set("maxPrice", mergedFilters.maxPrice.toString());
+        if (mergedFilters.subcategories.length > 0) {
+  params.set("subcategory", mergedFilters.subcategories.join(","));
+} else {
+  params.delete("subcategory");
+}
 
         // Set Metals Params (comma-separated string)
         if (mergedFilters.metals.length > 0) {

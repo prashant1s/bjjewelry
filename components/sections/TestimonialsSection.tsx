@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useEffect, useState } from "react";
+
+// ─── Your Google Sheet CSV export URL ───
+// Make sure your sheet is set to: Share → Anyone with the link → Viewer
+const SHEET_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/14asxC9ZsU1mdMCk6giag5WPpUmVemaiXXX7ALDfIgds/export?format=csv&gid=0";
+
 type Testimonial = {
   name: string;
   date: string;
@@ -9,76 +16,111 @@ type Testimonial = {
   text: string;
   avatar: string;
 };
-const TESTIMONIALS = [
-  {
-    name: "Aarav",
-    date: "2025-07-22",
-    rating: 5,
-    text: "I'm so glad to be a client of Mango Digital! As a small business owner, having a trusted team to handle my digital marketing and website needs is incredible.",
-    avatar: "https://i.pravatar.cc/150?img=11",
-  },
-  {
-    name: "Rahul",
-    date: "2023-04-01",
-    rating: 5,
-    text: "Awesome management, food, music night, and locals. Very walkable and close to many restaurants and bars. Highly recommended!",
-    avatar: "https://i.pravatar.cc/150?img=33",
-  },
-  {
-    name: "Arjun",
-    date: "2025-11-16",
-    rating: 5,
-    text: "Very walkable and close to many restaurants and bars. The market across the street was our go to! The home itself felt very clean and was well maintained.",
-    avatar: "https://i.pravatar.cc/150?img=44",
-  },
-  {
-    name: "Sarah Jenkins",
-    date: "2024-02-14",
-    rating: 5,
-    text: "The communication was stellar from start to finish. They truly understood our vision and executed it flawlessly.",
-    avatar: "https://i.pravatar.cc/150?img=5",
-  },
-];
+
+// Parses CSV text → Testimonial array (handles commas inside quoted fields)
+function parseCSV(csv: string): Testimonial[] {
+  const lines = csv.trim().split("\n");
+  if (lines.length < 2) return [];
+
+  const headers = lines[0]
+    .split(",")
+    .map((h) => h.trim().toLowerCase().replace(/"/g, ""));
+
+  return lines
+    .slice(1)
+    .map((line) => {
+      const cols: string[] = [];
+      let inQuotes = false;
+      let current = "";
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '"') {
+          inQuotes = !inQuotes;
+        } else if (line[i] === "," && !inQuotes) {
+          cols.push(current.trim());
+          current = "";
+        } else {
+          current += line[i];
+        }
+      }
+      cols.push(current.trim());
+
+      const get = (key: string) => cols[headers.indexOf(key)] ?? "";
+
+      return {
+        name: get("name"),
+        date: get("date"),
+        rating: parseInt(get("rating")) || 5,
+        text: get("text"),
+        // If no avatar URL in sheet, generate a unique one from the name
+        avatar:
+          get("avatar") || `https://i.pravatar.cc/150?u=${encodeURIComponent(get("name"))}`,
+      };
+    })
+    .filter((t) => t.name); // skip empty rows
+}
 
 export function TestimonialsSection() {
-const renderCard = (t: Testimonial, i: number) => (
-      <div
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(SHEET_CSV_URL)
+      .then((res) => res.text())
+      .then((csv) => setTestimonials(parseCSV(csv)))
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const renderCard = (t: Testimonial, i: number) => (
+    <div
       key={`${t.name}-${i}`}
-      // Hardcoding width to prevent squeezing and ensuring text wraps normally
-      style={{ width: '400px', whiteSpace: 'normal' }}
+      style={{ width: "400px", whiteSpace: "normal" }}
       className="flex-shrink-0 bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 p-8 flex flex-col"
     >
-      {/* Removed the social icons and simplified the header layout */}
       <div className="flex items-center gap-4 mb-5">
         <img
           src={t.avatar}
           alt={t.name}
-          style={{ width: '56px', height: '56px' }}
+          style={{ width: "56px", height: "56px" }}
           className="rounded-full object-cover"
         />
         <div>
-          <h4 className="font-serif text-gray-900 text-lg leading-tight mb-1">{t.name}</h4>
+          <h4 className="font-serif text-gray-900 text-lg leading-tight mb-1">
+            {t.name}
+          </h4>
           <p className="text-sm text-gray-500 font-medium">{t.date}</p>
         </div>
       </div>
 
       <div className="flex gap-1.5 mb-5">
         {Array.from({ length: t.rating }).map((_, j) => (
-          <Star 
-             key={j} 
-             size={18} 
-             color="#C9A84C" 
-             fill="#C9A84C" 
-             className="text-[#C9A84C]" 
-          />
+          <Star key={j} size={18} color="#C9A84C" fill="#C9A84C" className="text-[#C9A84C]" />
         ))}
       </div>
 
-      <p className="text-gray-700 leading-relaxed">
-        {t.text}
-      </p>
+      <p className="text-gray-700 leading-relaxed">{t.text}</p>
     </div>
   );
+
+  if (loading) {
+    return (
+      <section className="bg-[#FAF7F2] py-24 flex items-center justify-center">
+        <p className="text-gray-400 text-sm tracking-widest uppercase animate-pulse">
+          Loading reviews…
+        </p>
+      </section>
+    );
+  }
+
+  if (testimonials.length === 0) {
+    return (
+      <section className="bg-[#FAF7F2] py-24 flex items-center justify-center">
+        <p className="text-gray-400 text-sm">
+          No reviews found. Make sure your sheet is set to public.
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-[#FAF7F2] py-24 overflow-hidden">
@@ -86,7 +128,10 @@ const renderCard = (t: Testimonial, i: number) => (
         <p className="text-sm tracking-[0.2em] font-medium uppercase text-gray-500 mb-4">
           Client Stories
         </p>
-        <h2 className="text-4xl md:text-5xl text-gray-900" style={{ fontFamily: "var(--font-serif), serif" }}>
+        <h2
+          className="text-4xl md:text-5xl text-gray-900"
+          style={{ fontFamily: "var(--font-serif), serif" }}
+        >
           What people say
         </h2>
       </div>
@@ -96,32 +141,23 @@ const renderCard = (t: Testimonial, i: number) => (
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
 
         <div className="flex w-fit overflow-hidden">
-          {/* Increased gap from 6 to 8, and pr from 6 to 8 for perfect spacing */}
           <motion.div
             className="flex gap-8 pr-8 shrink-0 cursor-grab active:cursor-grabbing"
             animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              ease: "linear",
-              duration: 35, 
-              repeat: Infinity,
-            }}
+            transition={{ ease: "linear", duration: 35, repeat: Infinity }}
             whileHover={{ animationPlayState: "paused" }}
           >
-            {TESTIMONIALS.map((t, i) => renderCard(t, i))}
+            {testimonials.slice(0, 5).map((t, i) => renderCard(t, i))}
           </motion.div>
 
           <motion.div
             className="flex gap-8 pr-8 shrink-0 cursor-grab active:cursor-grabbing"
             animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              ease: "linear",
-              duration: 35,
-              repeat: Infinity,
-            }}
+            transition={{ ease: "linear", duration: 35, repeat: Infinity }}
             whileHover={{ animationPlayState: "paused" }}
             aria-hidden="true"
           >
-            {TESTIMONIALS.map((t, i) => renderCard(t, i))}
+            {testimonials.slice(0, 5).map((t, i) => renderCard(t, i))}
           </motion.div>
         </div>
       </div>

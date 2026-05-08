@@ -55,14 +55,14 @@ const TICKER_ITEMS = (rates: MetalRates) => [
     change: rates?.changes?.gold22k ?? 0,
   },
   {
-    label: "18K Gold",
-    value: `₹${safeFormat(rates?.gold18k)} ($${safeFormat(rates?.gold18kUsd, true)}) /g`,
-    change: rates?.changes?.gold18k ?? 0,
-  },
-  {
-    label: "Silver",
+    label: "Silver(92.5)",
     value: `₹${safeFormat(rates?.silver)} ($${safeFormat(rates?.silverUsd, true)}) /g`,
     change: rates?.changes?.silver ?? 0,
+  },
+  {
+    label: "Trusted by Retailers Across India — Join B2B Today",
+    value: "",
+    change: null,
   },
   {
     label: "Free Shipping on Orders Above 500gram",
@@ -144,6 +144,7 @@ export default function MetalTicker() {
             key={i}
             className="inline-flex items-center gap-1.5 px-6 text-[11px] tracking-widest uppercase font-medium"
           >
+            <span className="text-[#C9A84C] mx-0.5 ">◆</span>
             {item.value ? (
               <>
                 <span className="text-[#C9A84C]">{item.label}</span>
@@ -154,7 +155,6 @@ export default function MetalTicker() {
               <span className="text-white/60">{item.label}</span>
             )}
 
-            <span className="text-[#C9A84C] mx-3">◆</span>
           </span>
         ))}
       </motion.div>

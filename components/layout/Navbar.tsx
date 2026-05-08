@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -88,6 +88,7 @@ export function Navbar() {
   // Search State
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const searchRef = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -97,6 +98,25 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+  function handleClickOutside(event: MouseEvent) {
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(event.target as Node)
+    ) {
+      setIsSearchOpen(false);
+    }
+  }
+
+  if (isSearchOpen) {
+    document.addEventListener("mousedown", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [isSearchOpen]);
 
   const closeMobile = () => {
     setMobileOpen(false);
@@ -246,7 +266,7 @@ export function Navbar() {
           </nav>
 
           {/* Action Icons */}
-          <div className="flex items-center gap-4 relative">
+          <div ref={searchRef} className="flex items-center gap-4 relative">
             <Link
               href={session ? "/account" : "/login"}
               className="hidden md:flex text-[#4a4a4a] hover:text-[#C9A84C] transition-colors"

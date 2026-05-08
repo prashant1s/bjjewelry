@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   // State to toggle between Login and Register tabs
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
@@ -61,11 +62,22 @@ export default function LoginPage() {
     const sessionRes = await fetch("/api/auth/session");
     const session = await sessionRes.json();
 
-    if (session?.user?.role === "ADMIN") {
-      router.push("/admin");
-    } else {
-      router.push("/");
-    }
+    const redirect = searchParams.get("redirect");
+
+if (session?.user?.role === "ADMIN") {
+  router.push("/admin");
+} else {
+  if (redirect === "catalogue") {
+    window.open(
+      "YOUR_GOOGLE_DRIVE_LINK",
+      "_blank"
+    );
+
+    router.push("/");
+  } else {
+    router.push("/");
+  }
+}
   };
 
   // ----------------------------------------

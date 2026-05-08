@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { ArrowRight, FileText } from "lucide-react";
 
 export function HeroSection() {
+  const router = useRouter();
+const { data: session } = useSession();
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
       {/* ── Video Background ── */}
@@ -99,12 +103,22 @@ export function HeroSection() {
               >
                 Explore Collections <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                href="/trade/b2b"
-                className="flex items-center gap-2 border border-white/60 bg-black/10 backdrop-blur-sm text-white hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors text-[11px] tracking-[0.15em] uppercase px-6 py-3"
-              >
-                <FileText className="w-4 h-4" /> B2B Catalogue
-              </Link>
+              <button
+  onClick={() => {
+    if (session) {
+      window.open(
+        "https://drive.google.com/drive/folders/1O9bVLgOMCCLrFDUac9Xttc71KL6L6KDZ",
+        "_blank"
+      );
+    } else {
+      router.push("/login?redirect=catalogue");
+    }
+  }}
+  className="flex items-center gap-2 border border-white/60 bg-black/10 backdrop-blur-sm text-white hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors text-[11px] tracking-[0.15em] uppercase px-6 py-3"
+>
+  <FileText className="w-4 h-4" />
+  B2B Catalogue
+</button>
             </motion.div>
 
             {/* Trust badges */}

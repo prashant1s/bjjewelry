@@ -57,12 +57,98 @@ export const productSchema = {
         ],
       },
     },
-    { 
-      name: "style", 
-      title: "Style / Sub-category", 
-      type: "string",
-      description: "e.g., 'Cuban Link', 'Charm Bracelets', 'Bridal Heavy'" 
-    },
+    {
+  name: "style",
+  title: "Style / Sub-category",
+  type: "string",
+  options: {
+    list: [
+
+      // Anklets
+      { title: "Classic Chain Anklets", value: "classic-chain-anklets" },
+      { title: "Beaded Anklets", value: "beaded-anklets" },
+      { title: "Charm Anklets", value: "charm-anklets" },
+      { title: "Layered Anklets", value: "layered-anklets" },
+      { title: "Adjustable Anklets", value: "adjustable-anklets" },
+      { title: "Oxidised Anklets", value: "oxidised-anklets" },
+      { title: "Temple Style Anklets", value: "temple-style-anklets" },
+      { title: "Tribal Anklets", value: "tribal-anklets" },
+      { title: "Bridal Heavy Anklets", value: "bridal-heavy-anklets" },
+      { title: "Minimal Anklets", value: "minimal-anklets" },
+      { title: "Personalized Anklets", value: "personalized-anklets" },
+
+      // Bangles
+      { title: "Classic Plain Bangles", value: "classic-plain-bangles" },
+      { title: "Kada Bangles", value: "kada-bangles" },
+      { title: "Openable Bangles", value: "openable-bangles" },
+      { title: "Cuff Bangles", value: "cuff-bangles" },
+      { title: "Stackable Bangles", value: "stackable-bangles" },
+      { title: "Stone Studded Bangles", value: "stone-studded-bangles" },
+      { title: "Temple Bangles", value: "temple-bangles" },
+      { title: "Oxidised Bangles", value: "oxidised-bangles" },
+      { title: "Meenakari Bangles", value: "meenakari-bangles" },
+      { title: "Bridal Bangles", value: "bridal-bangles" },
+      { title: "Minimal Bangles", value: "minimal-bangles" },
+
+      // Belly Chains
+      { title: "Classic Waist Chains", value: "classic-waist-chains" },
+      { title: "Layered Belly Chains", value: "layered-belly-chains" },
+      { title: "Charm Belly Chains", value: "charm-belly-chains" },
+      { title: "Minimal Waist Chains", value: "minimal-waist-chains" },
+      { title: "Bridal Kamarband", value: "bridal-kamarband" },
+      { title: "Temple Kamarband", value: "temple-kamarband" },
+      { title: "Beaded Waist Chains", value: "beaded-waist-chains" },
+      { title: "Adjustable Belly Chains", value: "adjustable-belly-chains" },
+
+      // Men's Bracelets
+      { title: "Chain Bracelets", value: "men-chain-bracelets" },
+      { title: "Cuban Link Bracelets", value: "cuban-link-bracelets" },
+      { title: "Rope Bracelets", value: "rope-bracelets" },
+      { title: "Leather + Silver Bracelets", value: "leather-silver-bracelets" },
+      { title: "Kada Bracelets", value: "kada-bracelets" },
+      { title: "Beaded Bracelets", value: "men-beaded-bracelets" },
+      { title: "ID Plate Bracelets", value: "id-plate-bracelets" },
+
+      // Women's Bracelets
+      { title: "Charm Bracelets", value: "charm-bracelets" },
+      { title: "Tennis Bracelets", value: "tennis-bracelets" },
+      { title: "Cuff Bracelets", value: "cuff-bracelets" },
+      { title: "Chain Bracelets", value: "women-chain-bracelets" },
+      { title: "Adjustable Bracelets", value: "adjustable-bracelets" },
+      { title: "Stone Studded Bracelets", value: "stone-studded-bracelets" },
+      { title: "Minimal Bracelets", value: "minimal-bracelets" },
+
+      // Chains
+      { title: "Cuban Chain", value: "cuban-chain" },
+      { title: "Rope Chain", value: "rope-chain" },
+      { title: "Franco Chain", value: "franco-chain" },
+      { title: "Figaro Chain", value: "figaro-chain" },
+      { title: "Paperclip Chain", value: "paperclip-chain" },
+      { title: "Snake Chain", value: "snake-chain" },
+      { title: "Cable Chain", value: "cable-chain" },
+
+      // Necklaces
+      { title: "Pendant Necklaces", value: "pendant-necklaces" },
+      { title: "Layered Necklaces", value: "layered-necklaces" },
+      { title: "Choker Necklaces", value: "choker-necklaces" },
+      { title: "Statement Necklaces", value: "statement-necklaces" },
+      { title: "Temple Necklaces", value: "temple-necklaces" },
+      { title: "Oxidised Necklaces", value: "oxidised-necklaces" },
+      { title: "Bridal Necklaces", value: "bridal-necklaces" },
+      { title: "Gemstone Necklaces", value: "gemstone-necklaces" },
+      { title: "Minimal Necklaces", value: "minimal-necklaces" },
+      { title: "Personalized Necklaces", value: "personalized-necklaces" },
+
+      // Watches
+      { title: "Metal Strap Watches", value: "metal-strap-watches" },
+      { title: "Chronograph Watches", value: "chronograph-watches" },
+      { title: "Fashion Watches", value: "fashion-watches" },
+      { title: "Designer Watches", value: "designer-watches" },
+      { title: "Skeleton Watches", value: "skeleton-watches" },
+
+    ]
+  }
+},
     { 
       name: "moq", 
       title: "Minimum Order Quantity (MOQ)", 

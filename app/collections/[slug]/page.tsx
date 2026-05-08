@@ -25,6 +25,8 @@ export default async function Page(props: {
   const minPrice = Number(resolvedSearchParams.minPrice) || 0;
   const maxPrice = Number(resolvedSearchParams.maxPrice) || 1000000;
   const metals = (resolvedSearchParams.metal as string)?.split(",") || [];
+  const subcategories =
+  (resolvedSearchParams.subcategory as string)?.split(",") || [];
   const sortBy = (resolvedSearchParams.sort as SortOption) || "newest";
 
   // 4. Construct the Sanity GROQ Query
@@ -56,6 +58,11 @@ export default async function Page(props: {
     queryParams.metals = metals;
   }
 
+  // SUBCATEGORY FILTER
+if (subcategories.length > 0) {
+  query += ` && style in $subcategories`;
+  queryParams.subcategories = subcategories;
+}
   // Close the filter block
   query += `]`;
 
@@ -105,7 +112,11 @@ export default async function Page(props: {
         <CollectionPageClient 
           initialProducts={products}
           categoryTitle={title}
-          currentFilters={{ minPrice, maxPrice, metals, sortBy }}
+          currentFilters={{
+  subcategories,
+  metals: metals || [],
+  sortBy: sortBy || "newest",
+}}
         />
       </div>
     </div>

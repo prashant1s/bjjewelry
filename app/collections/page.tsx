@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -79,7 +80,7 @@ const STATIC_COLLECTIONS = [
   {
     slug: "Watch ",
     title: "Watch Collection",
-    subtitle: "The latest additions to our atelier — season 2026",
+    subtitle: "The latest additions to our retalier — season 2026",
     badge: "New",
     items: "40+ designs",
     image: "/images/collections/watch.webp",
@@ -118,7 +119,7 @@ export default async function CollectionsPage() {
         <FloatingGoldLine />
         <div className="relative z-10">
           <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A84C] mb-3">
-            Our Atelier
+            Our Products
           </p>
           <h1
             className="text-4xl md:text-5xl font-light text-[#1a1a1a]"
@@ -127,7 +128,7 @@ export default async function CollectionsPage() {
             All Collections
           </h1>
           <p className="text-[#6a6a6a] mt-4 max-w-md mx-auto text-sm leading-relaxed">
-            18 years of craft. Every piece tells a story of heritage, skill, and beauty.
+            19 years of craft. Every piece tells a story of heritage, skill, and beauty.
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mt-6" />
         </div>
@@ -136,12 +137,17 @@ export default async function CollectionsPage() {
       {/* Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
           {allCollections.map((col: any, index: number) => {
             // Logic to handle different URL formats
             const destination = col.href || `/collections/${col.slug}`;
 
             return (
-              <Link key={col.slug || index} href={destination} className="block group">
+              <Link
+  key={col.slug || index}
+  href={`/login`}
+  className="block group"
+>
                 <div className="border border-[#f2d98a]/50 p-8 relative hover:border-[#C9A84C] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white h-full flex flex-col">
                   {col.badge && (
                     <span className="absolute top-4 right-4 text-[9px] tracking-[0.2em] uppercase border border-[#C9A84C] text-[#C9A84C] px-2 py-0.5 bg-white z-10">
